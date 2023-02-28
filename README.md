@@ -28,14 +28,14 @@ After adding a custom repository you can use HACS to install this integration us
 
 ### Manual
 
-To install this integration manually you have to download [*ham_radio_propagation.zip*](https://github.com/emics/ham_radio_propagation/releases/latest/download/ham_radio_propagation.zip) and extract its contents to `config/custom_components/ham_radio_propagation` directory:
+To install this integration manually you have to download [*ham_radio_propagation.zip*](https://github.com/emics/ham_radio_propagation/archive/refs/heads/main.zip) and extract its contents to `config/custom_components/ham_radio_propagation` directory:
 
 ```bash
 mkdir -p custom_components/ham_radio_propagation
 cd custom_components/ham_radio_propagation
-wget https://github.com/emics/ham_radio_propagation/releases/latest/download/ham_radio_propagation.zip
-unzip ham_radio_propagation.zip
-rm ham_radio_propagation.zip
+wget https://github.com/emics/ham_radio_propagation/archive/refs/heads/main.zip
+unzip main.zip
+rm main.zip
 ```
 
 ## Configuration
