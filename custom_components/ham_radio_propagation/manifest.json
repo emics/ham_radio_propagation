@@ -1,0 +1,12 @@
+{
+  "codeowners": ["@emics"],
+  "config_flow": true,
+  "dependencies": ["http"],
+  "documentation": "https://github.com/emics/ham_radio_propagation/",
+  "domain": "ham_radio_propagation",
+  "iot_class": "cloud_polling",
+  "issue_tracker": "https://github.com/emics/ham_radio_propagation/issues",
+  "name": "HAM Radio Propagation",
+  "requirements": ["aiohttp"],
+  "version": "1.0.1"
+}

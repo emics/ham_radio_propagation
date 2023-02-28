@@ -1,0 +1,10 @@
+__pycache__
+*egg-info
+.pytest_cache
+build
+dist
+tests
+.pre-commit-config.yaml
+requirements.test.txt
+setup.cfg
+
