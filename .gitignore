@@ -7,4 +7,3 @@ tests
 .pre-commit-config.yaml
 requirements.test.txt
 setup.cfg
-
