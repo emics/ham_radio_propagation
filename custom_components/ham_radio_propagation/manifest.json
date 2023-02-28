@@ -8,5 +8,5 @@
   "issue_tracker": "https://github.com/emics/ham_radio_propagation/issues",
   "name": "HAM Radio Propagation",
   "requirements": ["aiohttp"],
-  "version": "1.0.1"
+  "version": "0.0.1"
 }
