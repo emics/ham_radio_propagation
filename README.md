@@ -1,5 +1,7 @@
 # HAM Radio Propagation for Home Assistant
 
+![Logo](https://raw.githubusercontent.com/emics/ham_radio_propagation/main/assets/brand/logo.png)
+
 [![GitHub Release][releases-shield]][releases]
 [![License][license-shield]](LICENSE)
 
