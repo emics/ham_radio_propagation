@@ -1,8 +1,14 @@
 # HAM Radio Propagation for Home Assistant
 
+[![License][license-shield]](LICENSE)
+
+[![hacs][hacsbadge]][hacs]
+[![Project Maintenance][maintenance-shield]][user_profile]
+[![BuyMeCoffee][buymecoffeebadge]][buymecoffee]
+[![Don't buy me a coffee](https://img.shields.io/static/v1.svg?label=Don't%20buy%20me%20a%20coffee&message=🔔&color=black&logo=buy%20me%20a%20coffee&logoColor=white&labelColor=6f4e37)](https://paypal.me/macedonio)
+
 Welcome to my repository Home Assistant - Custom Component for HAM Radio Propagation connected to the [hamqsl.com][hamqsl] API.
 
-[![Don't buy me a coffee](https://img.shields.io/static/v1.svg?label=Don't%20buy%20me%20a%20coffee&message=🔔&color=black&logo=buy%20me%20a%20coffee&logoColor=white&labelColor=6f4e37)](https://paypal.me/macedonio)
 ---
 
 ## Introduction
@@ -45,9 +51,13 @@ The use of these names, trademarks and brands appearing in these image files, do
 
 <!--- hacs -->
 [hacs]: https://github.com/custom-components/hacs
+[hacsbadge]: https://img.shields.io/badge/HACS-Custom-orange.svg?style=for-the-badge
 [hacs_faq_custom]: https://hacs.xyz/docs/faq/custom_repositories
 [hacs_custom]: https://img.shields.io/badge/HACS-Custom-41BDF5.svg
 [hacs_integration]: https://github.com/hacs/integration
+[releases-shield]: https://img.shields.io/github/release/hmn/siku-integration.svg?style=for-the-badge
 
 <!--- External Link -->
 [hamqsl]: http://www.hamqsl.com/
+[buymecoffee]: https://www.buymeacoffee.com/emics
+[buymecoffeebadge]: https://img.shields.io/badge/buy%20me%20a%20coffee-donate-yellow.svg?style=for-the-badge
