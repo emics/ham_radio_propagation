@@ -6,7 +6,7 @@
 [![hacs][hacsbadge]][hacs]
 [![Project Maintenance][maintenance-shield]][user_profile]
 [![BuyMeCoffee][buymecoffeebadge]][buymecoffee]
-[![Don't buy me a coffee](https://img.shields.io/static/v1.svg?label=Don't%20buy%20me%20a%20coffee&message=🔔&color=black&logo=buy%20me%20a%20coffee&logoColor=white&labelColor=6f4e37)](https://paypal.me/macedonio)
+
 
 Welcome to my repository Home Assistant - Custom Component for HAM Radio Propagation connected to the [hamqsl.com][hamqsl] API.
 
@@ -38,7 +38,34 @@ sensor:
 ```
 
 ## Configuration
-This Integration don't require configuration
+This Integration don't require configuration.
+Adding sensor in Lovelace, add an Entiy List and paste this code.
+
+```yaml
+type: entities
+entities:
+  - entity: sensor.ham_radio_propagation_solar_flux_index
+  - entity: sensor.ham_radio_propagation_solar_sunspots
+  - entity: sensor.ham_radio_propagation_solar_a_index
+  - entity: sensor.ham_radio_propagation_solar_k_index
+  - entity: sensor.ham_radio_propagation_solar_bz
+  - entity: sensor.ham_radio_propagation_solar_wind
+  - entity: sensor.ham_radio_propagation_solar_hf_80_40_day
+  - entity: sensor.ham_radio_propagation_solar_hf_80_40_night
+  - entity: sensor.ham_radio_propagation_solar_hf_30_20_day
+  - entity: sensor.ham_radio_propagation_solar_hf_30_20_night
+  - entity: sensor.ham_radio_propagation_solar_hf_17_15_day
+  - entity: sensor.ham_radio_propagation_solar_hf_17_15_night
+  - entity: sensor.ham_radio_propagation_solar_hf_12_10_day
+  - entity: sensor.ham_radio_propagation_solar_hf_12_10_night
+  - entity: sensor.ham_radio_propagation_solar_geomag_field
+  - entity: sensor.ham_radio_propagation_solar_sig_noise_lvl
+title: HAM Radio Propagation
+```
+
+This is the result:
+
+[![Entity List][entity-list]]
 
 ## Contributions are welcome
 
@@ -60,7 +87,8 @@ The use of these names, trademarks and brands appearing in these image files, do
 [releases]: https://github.com/emics/ham_radio_propagation/releases
 [user_profile]: https://github.com/emics
 [license-shield]: https://img.shields.io/github/license/emics/ham_radio_propagation.svg?style=for-the-badge
-[maintenance-shield]: https://img.shields.io/badge/maintainer-%40hmn-blue.svg?style=for-the-badge
+[maintenance-shield]: https://img.shields.io/badge/maintainer-%40emics-blue.svg?style=for-the-badge
+[entity-list]: https://github.com/emics/ham_radio_propagation/assets/entity_list.png
 
 <!--- External Link -->
 [hamqsl]: http://www.hamqsl.com/
