@@ -2,7 +2,8 @@
   "domain": "ham_radio_propagation",
   "name": "HAM Radio Propagation",
   "codeowners": [],
-  "documentation": "https://www.home-assistant.io/integrations/HamRadio",
+  "documentation": "https://github.com/emics/ham_radio_propagation",
+  "issue_tracker": "https://github.com/emics/ham_radio_propagation/issues",
   "iot_class": "cloud_polling",
   "requirements": [
     "xmltodict==0.13.0"
