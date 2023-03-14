@@ -65,7 +65,7 @@ title: HAM Radio Propagation
 
 This is the result:
 
-[![Entity List][entity-list]]
+[![entity-list][entity-list]]
 
 ## Contributions are welcome
 
