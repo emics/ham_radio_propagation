@@ -1,5 +1,6 @@
 # HAM Radio Propagation for Home Assistant
 
+[![GitHub Release][releases-shield]][releases]
 [![License][license-shield]](LICENSE)
 
 [![hacs][hacsbadge]][hacs]
@@ -55,7 +56,9 @@ The use of these names, trademarks and brands appearing in these image files, do
 [hacs_faq_custom]: https://hacs.xyz/docs/faq/custom_repositories
 [hacs_custom]: https://img.shields.io/badge/HACS-Custom-41BDF5.svg
 [hacs_integration]: https://github.com/hacs/integration
-[releases-shield]: https://img.shields.io/github/release/hmn/siku-integration.svg?style=for-the-badge
+[releases-shield]: https://img.shields.io/github/release/emics/ham_radio_propagation.svg?style=for-the-badge
+[releases]: https://github.com/emics/ham_radio_propagation/releases
+[user_profile]: https://github.com/emics
 
 <!--- External Link -->
 [hamqsl]: http://www.hamqsl.com/
