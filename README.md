@@ -65,7 +65,7 @@ title: HAM Radio Propagation
 
 This is the result:
 
-[![Entity List](entity_list)]
+![Entity List](https://github.com/emics/ham_radio_propagation/assets/entity_list.png)
 
 ## Contributions are welcome
 
@@ -88,7 +88,6 @@ The use of these names, trademarks and brands appearing in these image files, do
 [user_profile]: https://github.com/emics
 [license-shield]: https://img.shields.io/github/license/emics/ham_radio_propagation.svg?style=for-the-badge
 [maintenance-shield]: https://img.shields.io/badge/maintainer-%40emics-blue.svg?style=for-the-badge
-[entity_list]: https://github.com/emics/ham_radio_propagation/assets/entity_list.png
 
 <!--- External Link -->
 [hamqsl]: http://www.hamqsl.com/
