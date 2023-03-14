@@ -27,7 +27,7 @@ This integration can be added to HACS as a [custom repository](https://hacs.xyz/
 * URL: `https://github.com/emics/ham_radio_propagation`
 * Category: `Integration`
 
-Once downloaded and configured as per below information, you'll need to restart HomeAssistant to have the custom component and the sensors of ztm platform taken into consideration.
+Once downloaded and configured as per below information, you'll need to restart HomeAssistant to have the custom component and the sensors of ham_radio_propagation platform taken into consideration.
 
 Then add the data to your `configuration.yaml` file as shown in the example:
 
