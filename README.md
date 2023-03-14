@@ -20,48 +20,18 @@ This integration can be added to HACS as a [custom repository](https://hacs.xyz/
 * URL: `https://github.com/emics/ham_radio_propagation`
 * Category: `Integration`
 
-After adding a custom repository you can use HACS to install this integration using user interface.
+Once downloaded and configured as per below information, you'll need to restart HomeAssistant to have the custom component and the sensors of ztm platform taken into consideration.
 
-1. Search for `Ham Radio`
-2. Click the `INSTALL THIS REPOSITORY IN HACS` button
-3. Restart Home Assistant
+Then add the data to your `configuration.yaml` file as shown in the example:
 
-### Manual
-
-To install this integration manually you have to download [*ham_radio_propagation.zip*](https://github.com/emics/ham_radio_propagation/archive/refs/heads/main.zip) and extract its contents to `config/custom_components/ham_radio_propagation` directory:
-
-```bash
-mkdir -p custom_components/ham_radio_propagation
-cd custom_components/ham_radio_propagation
-wget https://github.com/emics/ham_radio_propagation/archive/refs/heads/main.zip
-unzip main.zip
-rm main.zip
+```yaml
+# Example configuration.yaml entry
+sensor:
+  - platform: ham_radio_propagation
 ```
 
 ## Configuration
-
-### Config flow
-
-To configure this integration go to: `Configurations` -> `Integrations` -> `ADD INTEGRATIONS` button, search for `Ham Radio Propagation` and configure the component.
-
-You can also use following [My Home Assistant](http://my.home-assistant.io/) link
-
-[![Open your Home Assistant instance and start setting up a new integration.](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=ham_radio_propagation)
-
-### Setup 
-
-Now the integration is added to HACS and available in the normal HA integration installation
-
-1. In the HomeAssistant left menu, click `Configuration`
-2. Click `Integrations`
-3. Click `ADD INTEGRATION`
-4. Type `Ham Radio Propagation` and select it
-5. Configure the Options
-   * Update interval (minutes, default 120)
-
-Once you done that, you’re ready to start.
-
-
+This Integration don't require configuration
 
 ## Contributions are welcome
 
