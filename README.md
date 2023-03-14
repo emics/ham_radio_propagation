@@ -59,6 +59,8 @@ The use of these names, trademarks and brands appearing in these image files, do
 [releases-shield]: https://img.shields.io/github/release/emics/ham_radio_propagation.svg?style=for-the-badge
 [releases]: https://github.com/emics/ham_radio_propagation/releases
 [user_profile]: https://github.com/emics
+[license-shield]: https://img.shields.io/github/license/emics/ham_radio_propagation.svg?style=for-the-badge
+[maintenance-shield]: https://img.shields.io/badge/maintainer-%40hmn-blue.svg?style=for-the-badge
 
 <!--- External Link -->
 [hamqsl]: http://www.hamqsl.com/
