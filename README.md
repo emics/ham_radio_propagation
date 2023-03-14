@@ -14,7 +14,7 @@ Welcome to my repository Home Assistant - Custom Component for HAM Radio Propaga
 
 ## Introduction
 
-> The goal is to integrate the data from hamqsl.com APIs in a custom component in Home Assistant.
+> The goal is to integrate the data from [hamqsl.com][hamqsl] APIs in a custom component in Home Assistant.
 > This custom component is still in the development/testing phase. 
 > Bugs are still being worked out and breaking changes are common.
 
