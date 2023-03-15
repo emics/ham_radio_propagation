@@ -42,13 +42,14 @@ Once downloaded and configured as per below information, you'll need to restart 
 * Extract _all_ files from this archive you downloaded in the directory (folder) you created.
 
 ... then if you want to use `configuration.yaml` to configure sensor...
-* Add `ham_radio_propagation` sensor to your `configuration.yaml` file. See configuration examples below.
-* Restart Home Assistant
+
 
 
 ## Configuration
 ### Platform
-Add the data to your `configuration.yaml` file as shown in the example:
+Add `ham_radio_propagation` sensor to your `configuration.yaml` file. See configuration examples below.
+Restart Home Assistant
+
 
 ```yaml
 # Example configuration.yaml entry
