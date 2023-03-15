@@ -92,7 +92,7 @@ This is the result:
 
 This is an active open-source project. We are always open to people who want to use the code or contribute to it.
 
-We have set up a separate document containing our [contribution guidelines](CONTRIBUTING.md).
+We have set up a separate document containing our [contribution guidelines][contribution].
 
 Thank you for being involved! :heart_eyes:
 
@@ -118,6 +118,8 @@ The use of these names, trademarks and brands appearing in these image files, do
 [user_profile]: https://github.com/emics
 [license-shield]: https://img.shields.io/github/license/emics/ham_radio_propagation.svg?style=for-the-badge
 [maintenance-shield]: https://img.shields.io/badge/maintainer-%40emics-blue.svg?style=for-the-badge
+[contribution]: https://github.com/emics/ham_radio_propagation/blob/main/CONTRIBUTING.md
+
 
 
 <!--- External Link -->

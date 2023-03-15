@@ -1,6 +1,6 @@
 {
   "name": "HAM Radio Propagation",
+  "country": "IT",
   "render_readme": true,
-  "zip_release": false,
-  "country": "IT"
+  "zip_release": false
 }
