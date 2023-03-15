@@ -4,10 +4,12 @@
 
 [![GitHub Release][releases-shield]][releases]
 [![License][license-shield]](LICENSE)
+[![GitHub Activity][commits-shield]][commits]
 
 [![hacs][hacsbadge]][hacs]
 [![Project Maintenance][maintenance-shield]][user_profile]
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-41BDF5.svg?style=for-the-badge)](https://github.com/hacs/integration)
+[![Community Forum][forum-shield]][forum]
 
 [![BuyMeCoffee][buymecoffeebadge]][buymecoffee]
 
@@ -87,7 +89,13 @@ This is the result:
 
 <p align="center">* * *</p>
 
-## Contributions are welcome
+## Contributions are welcome!
+
+This is an active open-source project. We are always open to people who want to use the code or contribute to it.
+
+We have set up a separate document containing our [contribution guidelines](CONTRIBUTING.md).
+
+Thank you for being involved! :heart_eyes:
 
 ---
 
@@ -103,6 +111,8 @@ The use of these names, trademarks and brands appearing in these image files, do
 [hacs_faq_custom]: https://hacs.xyz/docs/faq/custom_repositories
 [hacs_custom]: https://img.shields.io/badge/HACS-Custom-41BDF5.svg
 [hacs_integration]: https://github.com/hacs/integration
+[commits-shield]: https://img.shields.io/github/last-commit/emics/ham_radio_propagation?style=for-the-badge
+[commits]: https://github.com/emics/ham_radio_propagation/commits/dev
 [releases-shield]: https://img.shields.io/github/release/emics/ham_radio_propagation.svg?style=for-the-badge
 [releases]: https://github.com/emics/ham_radio_propagation/releases
 [releases-latest]: https://github.com/emics/ham_radio_propagation/releases/latest
@@ -115,3 +125,5 @@ The use of these names, trademarks and brands appearing in these image files, do
 [hamqsl]: http://www.hamqsl.com/
 [buymecoffee]: https://www.buymeacoffee.com/emics
 [buymecoffeebadge]: https://img.shields.io/badge/buy%20me%20a%20coffee-donate-yellow.svg?style=for-the-badge
+[forum-shield]: https://img.shields.io/badge/community-forum-brightgreen.svg?style=for-the-badge
+[forum]: https://community.home-assistant.io/t/custom-component-ham-radio-propagation/547664
