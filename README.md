@@ -105,6 +105,7 @@ The use of these names, trademarks and brands appearing in these image files, do
 [hacs_integration]: https://github.com/hacs/integration
 [releases-shield]: https://img.shields.io/github/release/emics/ham_radio_propagation.svg?style=for-the-badge
 [releases]: https://github.com/emics/ham_radio_propagation/releases
+[releases-latest]: https://github.com/emics/ham_radio_propagation/releases/latest
 [user_profile]: https://github.com/emics
 [license-shield]: https://img.shields.io/github/license/emics/ham_radio_propagation.svg?style=for-the-badge
 [maintenance-shield]: https://img.shields.io/badge/maintainer-%40emics-blue.svg?style=for-the-badge
