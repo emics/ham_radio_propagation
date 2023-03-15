@@ -33,17 +33,30 @@ This integration can be added to HACS as a [custom repository](https://hacs.xyz/
 
 Once downloaded and configured as per below information, you'll need to restart HomeAssistant to have the custom component and the sensors of ham_radio_propagation platform taken into consideration.
 
-Then add the data to your `configuration.yaml` file as shown in the example:
+### Manual installation
+
+* Using the tool of choice open the directory (folder) for your HA configuration (where you find `configuration.yaml`).
+* If you do not have a `custom_components` directory (folder) there, you need to create it.
+* In the `custom_components` directory (folder) create a new folder called `ham_radio_propagation`.
+* Download file `Source code.zip` from the [latest release section][releases-latest] in this repository.
+* Extract _all_ files from this archive you downloaded in the directory (folder) you created.
+
+... then if you want to use `configuration.yaml` to configure sensor...
+* Add `ham_radio_propagation` sensor to your `configuration.yaml` file. See configuration examples below.
+* Restart Home Assistant
+
+
+## Configuration
+### Platform
+Add the data to your `configuration.yaml` file as shown in the example:
 
 ```yaml
 # Example configuration.yaml entry
 sensor:
   - platform: ham_radio_propagation
 ```
-
-## Configuration
-This Integration don't require configuration.
-Adding sensor in Lovelace, add an Entiy List and paste this code.
+### Dashboard
+Add an Entities Card and paste this code.
 
 ```yaml
 type: entities
@@ -69,7 +82,9 @@ title: HAM Radio Propagation
 
 This is the result:
 
-![Entity List](https://raw.githubusercontent.com/emics/ham_radio_propagation/main/assets/entity_list.png)
+![Entity Card](https://raw.githubusercontent.com/emics/ham_radio_propagation/main/assets/entity_list.png)
+
+<p align="center">* * *</p>
 
 ## Contributions are welcome
 
