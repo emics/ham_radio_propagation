@@ -8,7 +8,6 @@
 
 [![hacs][hacsbadge]][hacs]
 [![Project Maintenance][maintenance-shield]][user_profile]
-[![hacs_badge](https://img.shields.io/badge/HACS-Custom-41BDF5.svg?style=for-the-badge)](https://github.com/hacs/integration)
 [![Community Forum][forum-shield]][forum]
 
 [![BuyMeCoffee][buymecoffeebadge]][buymecoffee]
