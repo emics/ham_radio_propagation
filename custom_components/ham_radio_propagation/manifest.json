@@ -6,5 +6,5 @@
   "iot_class": "cloud_polling",
   "issue_tracker": "https://github.com/emics/ham_radio_propagation/issues",
   "requirements": ["xmltodict==0.13.0"],
-  "version": "0.1.4"
+  "version": "0.1.5"
 }

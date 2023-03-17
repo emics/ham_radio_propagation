@@ -1,6 +1,6 @@
 # HAM Radio Propagation for Home Assistant
 
-![Logo](https://raw.githubusercontent.com/emics/ham_radio_propagation/main/assets/brand/logo.png)
+![Logo](https://brands.home-assistant.io/ham_radio_propagation/logo.png)
 
 [![GitHub Release][releases-shield]][releases]
 [![License][license-shield]](LICENSE)
@@ -48,8 +48,9 @@ Once downloaded and configured as per below information, you'll need to restart 
 
 ## Configuration
 ### Platform
-Add `ham_radio_propagation` sensor to your `configuration.yaml` file. See configuration examples below.
-Restart Home Assistant
+* Add `ham_radio_propagation` platform to your `configuration.yaml` file or to `sensor.yaml` file if you have split the HA configuration in different files. 
+See configuration examples below. 
+* Restart Home Assistant
 
 
 ```yaml
@@ -95,6 +96,9 @@ This is an active open-source project. We are always open to people who want to 
 We have set up a separate document containing our [contribution guidelines][contribution].
 
 Thank you for being involved! :heart_eyes:
+
+Special thanks to:
+[@kwirk](https://community.home-assistant.io/u/kwirk)
 
 ---
 
