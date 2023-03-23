@@ -140,18 +140,18 @@ The use of these names, trademarks and brands appearing in these image files, do
 
 <!--- hacs -->
 [hacs]: https://github.com/custom-components/hacs
-[hacsbadge]: https://img.shields.io/badge/HACS-Custom-orange.svg?style=for-the-badge
+[hacsbadge]: https://img.shields.io/badge/HACS-Custom-cyan.svg?style=for-the-badge
 [hacs_faq_custom]: https://hacs.xyz/docs/faq/custom_repositories
 [hacs_custom]: https://img.shields.io/badge/HACS-Custom-41BDF5.svg
 [hacs_integration]: https://github.com/hacs/integration
-[commits-shield]: https://img.shields.io/github/last-commit/emics/ham_radio_propagation?style=for-the-badge
+[commits-shield]: https://img.shields.io/github/last-commit/emics/ham_radio_propagation?color=pink&style=for-the-badge
 [commits]: https://github.com/emics/ham_radio_propagation/commits/dev
 [releases-shield]: https://img.shields.io/github/release/emics/ham_radio_propagation.svg?style=for-the-badge
 [releases]: https://github.com/emics/ham_radio_propagation/releases
 [releases-latest]: https://github.com/emics/ham_radio_propagation/releases/latest
 [user_profile]: https://github.com/emics
-[license-shield]: https://img.shields.io/github/license/emics/ham_radio_propagation.svg?style=for-the-badge
-[maintenance-shield]: https://img.shields.io/badge/maintainer-%40emics-blue.svg?style=for-the-badge
+[license-shield]: https://img.shields.io/github/license/emics/ham_radio_propagation.svg?color=yellow&style=for-the-badge
+[maintenance-shield]: https://img.shields.io/badge/maintainer-%40emics-orange.svg?style=for-the-badge
 [contribution]: https://github.com/emics/ham_radio_propagation/blob/main/CONTRIBUTING.md
 
 
