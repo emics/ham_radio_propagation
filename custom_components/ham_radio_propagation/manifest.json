@@ -1,10 +1,11 @@
 {
   "domain": "ham_radio_propagation",
   "name": "HAM Radio Propagation",
-  "codeowners": [],
+  "codeowners": ["@emics"],
+  "config_flow": true,
   "documentation": "https://github.com/emics/ham_radio_propagation",
   "iot_class": "cloud_polling",
   "issue_tracker": "https://github.com/emics/ham_radio_propagation/issues",
   "requirements": ["xmltodict==0.13.0"],
-  "version": "0.1.5"
+  "version": "1.0.0"
 }

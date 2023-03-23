@@ -19,20 +19,27 @@ Welcome to my repository Home Assistant - Custom Component for HAM Radio Propaga
 
 ## Introduction
 
-> The goal is to integrate the data from [hamqsl.com][hamqsl] APIs in a custom component in Home Assistant.
 > This custom component is still in the development/testing phase. 
 > Bugs are still being worked out and breaking changes are common.
+
 
 ## Installation
 
 ### Using [Home Assistant Community Store](https://hacs.xyz/) (recommended)
 
-This integration can be added to HACS as a [custom repository](https://hacs.xyz/docs/faq/custom_repositories):
+Click on the button below to automatically navigate to the repository within HACS:
 
-* URL: `https://github.com/emics/ham_radio_propagation`
-* Category: `Integration`
+[![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=emics&repository=ham_radio_propagation&category=integration)
 
-Once downloaded and configured as per below information, you'll need to restart HomeAssistant to have the custom component and the sensors of ham_radio_propagation platform taken into consideration.
+Alternatively, follow the steps below:
+
+1. Go to HACS "Integrations >" section
+2. Click 3 dots in top right
+3. Click "Custom repositories"
+4. Add repository `https://github.com/emics/ham_radio_propagation` with category `Integration`
+5. In the lower right click `+ Explore & Download repositories`
+6. Search for "HAM" and add it
+
 
 ### Manual installation
 
@@ -42,23 +49,45 @@ Once downloaded and configured as per below information, you'll need to restart 
 * Download file `Source code.zip` from the [latest release section][releases-latest] in this repository.
 * Extract _all_ files from this archive you downloaded in the directory (folder) you created.
 
-... then if you want to use `configuration.yaml` to configure sensor...
-
-
 
 ## Configuration
-### Platform
-* Add `ham_radio_propagation` platform to your `configuration.yaml` file or to `sensor.yaml` file if you have split the HA configuration in different files. 
-See configuration examples below. 
-* Restart Home Assistant
+
+Click on the button below to add the integration:
+
+  [![Open your Home Assistant instance and start setting up a new integration.](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=ham_radio_propagation)
+
+Alternatively, follow the steps below:
+
+1. Install this integration.
+2. Navigate to the Home Assistant Integrations page (Settings --> Devices & Services)
+3. Click the `+ ADD INTEGRATION` button in the lower right-hand corner
+4. Search for `HAM`
+
+    ![Brand List](https://raw.githubusercontent.com/emics/ham_radio_propagation/main/assets/brand_list.png)
+
+5. Select if you want to start the configuration through 
+    * Solar Data
+    * MUF from ionosonde data
+
+    ![Step 1](https://raw.githubusercontent.com/emics/ham_radio_propagation/main/assets/entity_list/config_step_1.png)
+
+6. If your choice is MUF option you can select a Station from the dropdown list. Select the station nearest your location for best result. 
+
+    ![Step 2](https://raw.githubusercontent.com/emics/ham_radio_propagation/main/assets/entity_list/config_step_2.png)
+
+> You can do this steps as many times as you want and configure multiple MUF Station in the same Integration
+
+![Step 3](https://raw.githubusercontent.com/emics/ham_radio_propagation/main/assets/entity_list/config_step_3.png)
 
 
-```yaml
-# Example configuration.yaml entry
-sensor:
-  - platform: ham_radio_propagation
-```
 ### Dashboard
+
+You can go in the Device page and at the bottom click `ADD TO DASHBOARD`
+
+![Device Solar](https://raw.githubusercontent.com/emics/ham_radio_propagation/main/assets/entity_list/device_solar.png)
+
+#### Manual
+
 Add an Entities Card and paste this code.
 
 ```yaml
@@ -83,7 +112,7 @@ entities:
 title: HAM Radio Propagation
 ```
 
-This is the result:
+This is the card result:
 
 ![Entity Card](https://raw.githubusercontent.com/emics/ham_radio_propagation/main/assets/entity_list.png)
 
@@ -98,7 +127,8 @@ We have set up a separate document containing our [contribution guidelines][cont
 Thank you for being involved! :heart_eyes:
 
 Special thanks to:
-[@kwirk](https://community.home-assistant.io/u/kwirk)
+- [@kwirk](https://community.home-assistant.io/u/kwirk)
+- [@dragonjon](https://github.com/dragonjon)
 
 ---
 
@@ -129,6 +159,6 @@ The use of these names, trademarks and brands appearing in these image files, do
 <!--- External Link -->
 [hamqsl]: http://www.hamqsl.com/
 [buymecoffee]: https://www.buymeacoffee.com/emics
-[buymecoffeebadge]: https://img.shields.io/badge/buy%20me%20a%20coffee-donate-yellow.svg?style=for-the-badge
+[buymecoffeebadge]: https://img.buymeacoffee.com/button-api/?text=Buy%20me%20a%20coffee&emoji=&slug=emics&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff
 [forum-shield]: https://img.shields.io/badge/community-forum-brightgreen.svg?style=for-the-badge
 [forum]: https://community.home-assistant.io/t/custom-component-ham-radio-propagation/547664

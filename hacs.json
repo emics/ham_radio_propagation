@@ -1,6 +1,7 @@
 {
   "name": "HAM Radio Propagation",
   "country": "IT",
+  "homeassistant": "2022.4"
   "render_readme": true,
   "zip_release": false
 }

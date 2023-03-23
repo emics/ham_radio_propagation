@@ -3,202 +3,148 @@ from __future__ import annotations
 
 from datetime import timedelta
 from http import HTTPStatus
-import logging
 from xml.parsers.expat import ExpatError
 
+import logging
 import async_timeout
-import voluptuous as vol
 import xmltodict
+import json
 
-from homeassistant.components.sensor import (
-    PLATFORM_SCHEMA,
-    SensorDeviceClass,
-    SensorStateClass,
-    SensorEntity,
-    SensorEntityDescription,
-)
-from homeassistant.const import (
-    CONF_NAME,
-    UnitOfInformation,
-)
+from homeassistant.components.sensor import SensorStateClass, SensorEntity, SensorEntityDescription
+from homeassistant.const import CONF_NAME
 from homeassistant.core import HomeAssistant
+from homeassistant.config_entries import ConfigEntry
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
-import homeassistant.helpers.config_validation as cv
+from homeassistant.helpers.entity import DeviceInfo
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
-from homeassistant.helpers.typing import ConfigType, DiscoveryInfoType
+from homeassistant.helpers.device_registry import DeviceEntryType
 from homeassistant.util import Throttle, slugify
+from .const import *
 
-from .const import DOMAIN, NAME, MIN_TIME_BETWEEN_UPDATES, REQUEST_TIMEOUT, LOGGER
-
-
-SENSOR_TYPES: tuple[SensorEntityDescription, ...] = (
-    SensorEntityDescription(
-        key="solar_flux_index",
-        name="Solar Flux Index",
-        state_class=SensorStateClass.MEASUREMENT,
-        icon="mdi:weather-sunny-alert",
-    ),
-    SensorEntityDescription(
-        key="solar_sunspots",
-        name="Solar Sunspots",
-        state_class=SensorStateClass.MEASUREMENT,
-        icon="mdi:weather-sunny-alert",
-    ),
-    SensorEntityDescription(
-        key="solar_a_index",
-        name="Solar A-Index",
-        state_class=SensorStateClass.MEASUREMENT,
-        icon="mdi:alpha-a",
-    ),
-    SensorEntityDescription(
-        key="solar_k_index",
-        name="Solar K-Index",
-        state_class=SensorStateClass.MEASUREMENT,
-        icon="mdi:alpha-k",
-    ),
-    SensorEntityDescription(
-        key="solar_bz",
-        name="Solar Bz",
-        state_class=SensorStateClass.MEASUREMENT,
-        icon="mdi:sun-compass",
-    ),
-    SensorEntityDescription(
-        key="solar_wind",
-        name="Solar Wind",
-        state_class=SensorStateClass.MEASUREMENT,
-        device_class=SensorDeviceClass.WIND_SPEED,
-        icon="mdi:sun-wireless",
-        native_unit_of_measurement="km/s",
-    ),
-    SensorEntityDescription(
-        key="solar_hf_80_40_day",
-        name="HF Conditions 80m-40m Day",
-        icon="mdi:sine-wave",
-    ),
-    SensorEntityDescription(
-        key="solar_hf_30_20_day",
-        name="HF Conditions 30m-20m Day",
-        icon="mdi:sine-wave",
-    ),
-    SensorEntityDescription(
-        key="solar_hf_17_15_day",
-        name="HF Conditions 17m-15m Day",
-        icon="mdi:sine-wave",
-    ),
-    SensorEntityDescription(
-        key="solar_hf_12_10_day",
-        name="HF Conditions 12m-10m Day",
-        icon="mdi:sine-wave",
-    ),
-    SensorEntityDescription(
-        key="solar_hf_80_40_night",
-        name="HF Conditions 80m-40m Night",
-        icon="mdi:sine-wave",
-    ),
-    SensorEntityDescription(
-        key="solar_hf_30_20_night",
-        name="HF Conditions 30m-20m Night",
-        icon="mdi:sine-wave",
-    ),
-    SensorEntityDescription(
-        key="solar_hf_17_15_night",
-        name="HF Conditions 17m-15m Night",
-        icon="mdi:sine-wave",
-    ),
-    SensorEntityDescription(
-        key="solar_hf_12_10_night",
-        name="HF Conditions 12m-10m Night",
-        icon="mdi:sine-wave",
-    ),
-    SensorEntityDescription(
-        key="solar_geomag_field",
-        name="HF Conditions Geomag Field",
-        state_class=SensorStateClass.MEASUREMENT,
-        icon="mdi:compass",
-    ),
-    SensorEntityDescription(
-        key="solar_sig_noise_lvl",
-        name="HF Conditions Noise Level",
-        state_class=SensorStateClass.MEASUREMENT,
-        device_class=SensorDeviceClass.SIGNAL_STRENGTH,
-        icon="mdi:signal-cellular-2",
-    ),
-)
-
-SENSOR_KEYS: list[str] = [desc.key for desc in SENSOR_TYPES]
-
-PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
-    {
-        vol.Optional(CONF_NAME, default=NAME): cv.string,
-    }
-)
+_LOGGER = logging.getLogger(__name__)
 
 
-async def async_setup_platform(
-    hass: HomeAssistant,
-    config: ConfigType,
-    async_add_entities: AddEntitiesCallback,
-    discovery_info: DiscoveryInfoType | None = None,
+async def async_setup_entry(
+    hass: HomeAssistant, entry: ConfigEntry, async_add_entities: AddEntitiesCallback
 ) -> None:
+    """async_setup_platform"""
+    station_code = ""
+    station_name = ""
+    name = entry.data.get(CONF_NAME, False)
+
+    if entry.data[CHOICE] == TYPE_ONLY_SOLAR:
+        sensor_types_out = SENSOR_TYPES
+    else:
+        station_code = entry.data.get(STATION_CODE, False)
+        station_name = entry.data.get(STATION_NAME, False)
+        sensor_type_muf: tuple[SensorEntityDescription, ...] = (
+            SensorEntityDescription(
+                key="solar_hf_muf_" + station_code,
+                name="Solar HF MUF",
+                state_class=SensorStateClass.MEASUREMENT,
+                icon="mdi:format-wrap-top-bottom",
+                native_unit_of_measurement="MHz",
+            ),
+        )
+        if entry.data[CHOICE] == TYPE_ONLY_MUF:
+            sensor_types_out = sensor_type_muf
+        if entry.data[CHOICE] == TYPE_ALL:
+            sensor_types_out = (*SENSOR_TYPES, sensor_type_muf[0])
+
     websession = async_get_clientsession(hass)
 
     ts_data = HamRadioData(hass.loop, websession)
-    ret = await ts_data.async_update()
+    ret = await ts_data.async_data_update(entry.data[CHOICE], station_code)
     if ret is False:
-        LOGGER.error("Invalid data")
+        _LOGGER.error("Invalid data")
         return
 
-    name = config[CONF_NAME]
-
     async_add_entities(
-        [HamRadioSensor(ts_data, name, description) for description in SENSOR_TYPES],
+        [
+            HamRadioSensor(ts_data, name, description, entry, station_code)
+            for description in sensor_types_out
+        ],
         True,
     )
 
 
 class HamRadioSensor(SensorEntity):
-    """Representation of hamqsl.com sensor."""
+    """Representation of HamRadioSensor."""
+
+    _attr_has_entity_name = True
+    _choice = ""
+    _station_code = ""
 
     def __init__(
-        self, hamradiodata: HamRadioData, name, description: SensorEntityDescription
+        self,
+        hamradiodata: HamRadioData,
+        name,
+        description: SensorEntityDescription,
+        entry: ConfigEntry,
+        station_code: str
     ) -> None:
         """Initialize the sensor."""
         if hamradiodata is None:
-            LOGGER.error("Error empty client")
+            _LOGGER.error("Error empty client")
         self.entity_description = description
         self.hamradiodata = hamradiodata
         slug = slugify(description.key.replace("/", "_"))
         self.entity_id = f"sensor.{DOMAIN}_{slug}"
         self._attr_name = f"{description.name}"
+        #self._attr_native_value = 0
+        self._attr_unique_id = f"{entry.entry_id}_{slug}"
+        self._attr_device_info = DeviceInfo(
+            name=entry.title,
+            identifiers={(DOMAIN, entry.entry_id)},
+            entry_type=DeviceEntryType.SERVICE,
+            manufacturer=MANUFACTURER,
+            model=MODEL,
+            sw_version=VERSION,
+        )
+        self._choice = entry.data[CHOICE]
+        self._station_code = station_code
+
 
     async def async_update(self) -> None:
-        """Get the latest data from hamqsl.com and update the state."""
-        await self.hamradiodata.async_update()
+        """Get the latest data and update the state."""
+        await self.hamradiodata.async_data_update(self._choice, self._station_code)
         sensor_type = self.entity_description.key
         if sensor_type in self.hamradiodata.data:
             self._attr_native_value = self.hamradiodata.data[sensor_type]
 
 
 class HamRadioData:
-    """Get data from hamqsl.com API."""
+    """Get data from API."""
 
     def __init__(self, loop, websession):
         """Initialize the data object."""
         self.loop = loop
         self.websession = websession
-
-        # Set unlimited users to infinite, otherwise the cap.
-        self.data = {"limit": 0}
+        self.data = {}
 
     @Throttle(MIN_TIME_BETWEEN_UPDATES)
-    async def async_update(self):
+    async def async_data_update(self, choice: str, station_code: str):
+        """Get data from the web service."""
+        _LOGGER.debug("Updating data")
+        if choice == TYPE_ONLY_SOLAR:
+            await HamRadioData.async_data_update_hamqsl(self)
+        if choice == TYPE_ONLY_MUF:
+            await HamRadioData.async_data_update_kc2g(self, station_code)
+        if choice == TYPE_ALL:
+            await HamRadioData.async_data_update_hamqsl(self)
+            await HamRadioData.async_data_update_kc2g(self, station_code)
+
+    async def async_data_update_hamqsl(self):
         """Get the hamqsl.com data from the web service."""
-        LOGGER.debug("Updating hamqsl.com data")
-        url = "https://www.hamqsl.com/solarxml.php"
-        async with async_timeout.timeout(REQUEST_TIMEOUT):
-            req = await self.websession.get(url)
-        if req.status != HTTPStatus.OK:
-            LOGGER.error("Request failed with status: %u", req.status)
+        _LOGGER.debug("Updating hamqsl.com data")
+        try:
+            async with async_timeout.timeout(REQUEST_TIMEOUT):
+                req = await self.websession.get(URL_HAMQSL)
+            if req.status != HTTPStatus.OK:
+                _LOGGER.error("Request failed with status: %u", req.status)
+                return False
+        except Exception:
+            _LOGGER.error("Error contact hamqsl.com API")
             return False
 
         data = await req.text()
@@ -257,5 +203,35 @@ class HamRadioData:
 
         self.data["solar_geomag_field"] = solar_geomag_field.strip()
         self.data["solar_sig_noise_lvl"] = solar_sig_noise_lvl.strip()[1]
+        return True
 
+    async def async_data_update_kc2g(self, station_code: str):
+        """Get the kc2g.com data from the web service."""
+        _LOGGER.debug("Updating kc2g.com data")
+        try:
+            async with async_timeout.timeout(REQUEST_TIMEOUT):
+                req = await self.websession.get(URL_KC2G)
+            if req.status != HTTPStatus.OK:
+                _LOGGER.error("Request failed with status: %u", req.status)
+                return False
+        except Exception:
+            _LOGGER.error("Error contact kc2g.com API")
+            return False
+
+        data = await req.text()
+        entries = json.loads(data)
+        solar_hf_muf = 0
+        for entry in entries:
+            if entry["station"]["code"].strip() == station_code:
+                solar_hf_muf = round(entry["mufd"], 3)
+                break
+
+        if solar_hf_muf == 0:
+            _LOGGER.error(
+                "Station configured [%s] not found in kc2g.com API data. Select the correct Station Code from web site https://prop.kc2g.com/stations/",
+                station_code,
+            )
+            solar_hf_muf = "No Data Found"
+            # VALUE_STATION = ""
+        self.data["solar_hf_muf_" + station_code] = solar_hf_muf
         return True
