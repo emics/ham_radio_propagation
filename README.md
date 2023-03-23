@@ -69,22 +69,22 @@ Alternatively, follow the steps below:
     * Solar Data
     * MUF from ionosonde data
 
-    ![Step 1](https://raw.githubusercontent.com/emics/ham_radio_propagation/main/assets/entity_list/config_step_1.png)
+    ![Step 1](https://raw.githubusercontent.com/emics/ham_radio_propagation/main/assets/config_step_1.png)
 
 6. If your choice is MUF option you can select a Station from the dropdown list. Select the station nearest your location for best result. 
 
-    ![Step 2](https://raw.githubusercontent.com/emics/ham_radio_propagation/main/assets/entity_list/config_step_2.png)
+    ![Step 2](https://raw.githubusercontent.com/emics/ham_radio_propagation/main/assets/config_step_2.png)
 
 > You can do this steps as many times as you want and configure multiple MUF Station in the same Integration
 
-![Step 3](https://raw.githubusercontent.com/emics/ham_radio_propagation/main/assets/entity_list/config_step_3.png)
+![Step 3](https://raw.githubusercontent.com/emics/ham_radio_propagation/main/assets/config_step_3.png)
 
 
 ### Dashboard
 
 You can go in the Device page and at the bottom click `ADD TO DASHBOARD`
 
-![Device Solar](https://raw.githubusercontent.com/emics/ham_radio_propagation/main/assets/entity_list/device_solar.png)
+![Device Solar](https://raw.githubusercontent.com/emics/ham_radio_propagation/main/assets/device_solar.png)
 
 #### Manual
 
