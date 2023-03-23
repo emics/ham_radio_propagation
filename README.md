@@ -13,7 +13,7 @@
 [![BuyMeCoffee][buymecoffeebadge]][buymecoffee]
 
 
-Welcome to my repository Home Assistant - Custom Component for HAM Radio Propagation connected to the [hamqsl.com][hamqsl] API.
+Welcome to my repository Home Assistant - Custom Component for HAM Radio Propagation connected to the [hamqsl.com][hamqsl] and [kc2g.com][kc2g] API.
 
 ---
 
