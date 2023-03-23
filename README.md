@@ -158,6 +158,8 @@ The use of these names, trademarks and brands appearing in these image files, do
 
 <!--- External Link -->
 [hamqsl]: http://www.hamqsl.com/
+[kc2g]: https://prop.kc2g.com/
+
 [buymecoffee]: https://www.buymeacoffee.com/emics
 [buymecoffeebadge]: https://img.buymeacoffee.com/button-api/?text=Buy%20me%20a%20coffee&emoji=&slug=emics&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff
 [forum-shield]: https://img.shields.io/badge/community-forum-brightgreen.svg?style=for-the-badge
