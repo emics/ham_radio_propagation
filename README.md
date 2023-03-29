@@ -1,6 +1,6 @@
 # HAM Radio Propagation for Home Assistant
 
-![Logo](https://brands.home-assistant.io/ham_radio_propagation/logo.png)
+![Logo](https://brands.home-assistant.io/ham_radio_propagation/logo_wide.png)
 
 [![GitHub Release][releases-shield]][releases]
 [![License][license-shield]](LICENSE)
