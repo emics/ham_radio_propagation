@@ -18,6 +18,7 @@ NAME = "HAM Radio Propagation"
 MANUFACTURER = "hamqsl.com and kc2g.com"
 MODEL = "HAM Radio Propagation"
 VERSION = "1.0.0"
+CONFIGURATION_URL ="https://github.com/emics/ham_radio_propagation/"
 
 TYPE_ONLY_SOLAR = "Configure solar data"
 TYPE_ONLY_MUF = "Configure MUF from ionosonde data"

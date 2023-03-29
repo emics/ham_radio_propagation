@@ -91,11 +91,11 @@ class HamRadioSensor(SensorEntity):
         slug = slugify(description.key.replace("/", "_"))
         self.entity_id = f"sensor.{DOMAIN}_{slug}"
         self._attr_name = f"{description.name}"
-        #self._attr_native_value = 0
         self._attr_unique_id = f"{entry.entry_id}_{slug}"
         self._attr_device_info = DeviceInfo(
             name=entry.title,
             identifiers={(DOMAIN, entry.entry_id)},
+            configuration_url=CONFIGURATION_URL,
             entry_type=DeviceEntryType.SERVICE,
             manufacturer=MANUFACTURER,
             model=MODEL,
