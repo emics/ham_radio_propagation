@@ -10,7 +10,7 @@
 [![Project Maintenance][maintenance-shield]][user_profile]
 [![Community Forum][forum-shield]][forum]
 
-[![Active Installations][[installations-shield]]]
+[![Active Installations][installations-shield]]
 
 [![BuyMeCoffee][buymecoffeebadge]][buymecoffee]
 
