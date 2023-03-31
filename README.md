@@ -10,6 +10,8 @@
 [![Project Maintenance][maintenance-shield]][user_profile]
 [![Community Forum][forum-shield]][forum]
 
+[![Active Installations][[installations-shield]]]
+
 [![BuyMeCoffee][buymecoffeebadge]][buymecoffee]
 
 
@@ -152,6 +154,7 @@ The use of these names, trademarks and brands appearing in these image files, do
 [user_profile]: https://github.com/emics
 [license-shield]: https://img.shields.io/github/license/emics/ham_radio_propagation.svg?color=yellow&style=for-the-badge
 [maintenance-shield]: https://img.shields.io/badge/maintainer-%40emics-orange.svg?style=for-the-badge
+[installations-shield]: https://img.shields.io/endpoint?url=https://www.bbgest.cloud/ham_radio_propagation/shield.php&style=for-the-badge
 [contribution]: https://github.com/emics/ham_radio_propagation/blob/main/CONTRIBUTING.md
 
 
