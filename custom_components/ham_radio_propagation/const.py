@@ -2,23 +2,27 @@
 from datetime import timedelta
 from typing import Final
 from homeassistant.const import Platform
-from homeassistant.components.sensor import SensorDeviceClass, SensorStateClass, SensorEntityDescription
+from homeassistant.components.sensor import (
+    SensorDeviceClass,
+    SensorStateClass,
+    SensorEntityDescription,
+)
 
 MIN_TIME_BETWEEN_UPDATES = timedelta(hours=2)
 REQUEST_TIMEOUT = 60  # seconds
 PLATFORMS: Final = [Platform.SENSOR]
 
 # URL
-URL_HAMQSL: Final = "https://www.hamqsl.com/solarxml.php"
-URL_KC2G: Final = "https://prop.kc2g.com/api/stations.json"
+URL_STATIONS: Final = "https://www.bbgest.cloud/ham_radio_propagation/station_list.php"
+URL_API: Final = "https://www.bbgest.cloud/ham_radio_propagation/api.php"
 
 # Base component constants
 DOMAIN: Final = "ham_radio_propagation"
 NAME = "HAM Radio Propagation"
 MANUFACTURER = "hamqsl.com and kc2g.com"
 MODEL = "HAM Radio Propagation"
-VERSION = "1.0.0"
-CONFIGURATION_URL ="https://github.com/emics/ham_radio_propagation/"
+VERSION = "1.1.0"
+CONFIGURATION_URL = "https://github.com/emics/ham_radio_propagation#readme"
 
 TYPE_ONLY_SOLAR = "Configure solar data"
 TYPE_ONLY_MUF = "Configure MUF from ionosonde data"

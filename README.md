@@ -14,16 +14,10 @@
 
 [![BuyMeCoffee][buymecoffeebadge]][buymecoffee]
 
-
+## Introduction
 Welcome to my repository Home Assistant - Custom Component for HAM Radio Propagation connected to the [hamqsl.com][hamqsl] and [kc2g.com][kc2g] API.
 
 ---
-
-## Introduction
-
-> This custom component is still in the development/testing phase. 
-> Bugs are still being worked out and breaking changes are common.
-
 
 ## Installation
 
@@ -77,6 +71,7 @@ Alternatively, follow the steps below:
 
     ![Step 2](https://raw.githubusercontent.com/emics/ham_radio_propagation/main/assets/config_step_2.png)
 
+
 > You can do this steps as many times as you want and configure multiple MUF Station in the same Integration
 
 ![Step 3](https://raw.githubusercontent.com/emics/ham_radio_propagation/main/assets/config_step_3.png)
@@ -117,6 +112,43 @@ title: HAM Radio Propagation
 This is the card result:
 
 ![Entity Card](https://raw.githubusercontent.com/emics/ham_radio_propagation/main/assets/entity_list.png)
+
+
+
+# How to read sensor value 
+The three main items you want to pay attention to are the **SFI** (Solar Flux Index), the **K-Index** and the **A-Index**.
+
+## Solar Flux Index
+Summarization of the Sun's Radiation Output
+* 70 – Not Good
+* 80 – Good
+* 90 – Better
+* 100+ – Best
+
+
+## Solar A-Index 
+Daily Average of Magnetic Activity
+* 0 – 7 Quiet
+* 8 – 15 Unsettled
+* 16 – 29 Active
+* 30 – 49 Minor storm
+* 50 – 99 Major storm
+* 100 – 400 Severe storm
+
+
+## Solar K-Index 
+Updated every 3 Hours
+* 0 Inactive
+* 1 Very quiet
+* 2 Quiet
+* 3 Unsettled
+* 4 Active
+* 5 Minor storm
+* 6 Major storm
+* 7 Severe storm
+* 8 Very severe storm
+* 9 Extremely severe storm
+
 
 <p align="center">* * *</p>
 

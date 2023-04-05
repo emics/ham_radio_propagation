@@ -18,24 +18,32 @@ from .const import *
 
 _LOGGER = logging.getLogger(__name__)
 
+
 async def async_station_list_kc2g(hass: core.HomeAssistant) -> list:
     """Get the kc2g.com station list from the web service."""
     _LOGGER.debug("Get kc2g.com Station list")
     websession = async_get_clientsession(hass)
+    lat = hass.config.latitude
+    lon = hass.config.longitude
     async with async_timeout.timeout(REQUEST_TIMEOUT):
-        req = await websession.get(URL_KC2G)
+        req = await websession.get(f"{URL_STATIONS}?lat={lat}&lon={lon}")
     if req.status != HTTPStatus.OK:
         _LOGGER.error("Request failed with status: %u", req.status)
         return False
     data = await req.text()
     entries = json.loads(data)
-    station_dict = {}
-    for entry in entries:
-        station_dict[entry["station"]["code"].strip()] = entry["station"]["name"].strip()
 
     station_list = []
-    for key in sorted(station_dict, key=station_dict.get):
-        station_list.append(station_dict[key] + " (" + key + ")")
+    for entry in entries:
+        station_name: str = ""
+        if entry["country"]:
+            station_name += entry["country"] + " - "
+        if entry["state"]:
+            station_name += entry["state"] + " - "
+        station_name += entry["city"]
+        station_name += " [" + entry["code"] + "]"
+
+        station_list.append(station_name.strip())
 
     return station_list
 
@@ -49,10 +57,10 @@ async def validate_input(
     if USER_STATION_CODE in data:
         conf_station = data[USER_STATION_CODE]
         station_code = conf_station[
-            conf_station.find("(") + len("(") : conf_station.rfind(")")
+            conf_station.find("[") + len("[") : conf_station.rfind("]")
         ]
         station_name = (
-            conf_station.replace("(" + station_code + ")", "").replace(",", "").strip()
+            conf_station.replace("[" + station_code + "]", "").replace(",", "").strip()
         )
         data[STATION_CODE] = station_code
         data[STATION_NAME] = station_name
@@ -80,7 +88,7 @@ class HamRadioConfigFlow(ConfigFlow, domain=DOMAIN):
                 only_solar_configured = True
                 break
 
-        #if self._async_current_entries():
+        # if self._async_current_entries():
         #    return self.async_abort(reason="single_instance_allowed")
 
         if only_solar_configured:
@@ -92,7 +100,7 @@ class HamRadioConfigFlow(ConfigFlow, domain=DOMAIN):
                         (
                             TYPE_ONLY_SOLAR,
                             TYPE_ONLY_MUF,
-                        #   TYPE_ALL,
+                            #   TYPE_ALL,
                         )
                     )
                 }
@@ -141,8 +149,6 @@ class HamRadioConfigFlow(ConfigFlow, domain=DOMAIN):
         return self.async_show_form(
             step_id="station", data_schema=vol.Schema(data_schema)
         )
-
-
 
 
 class CannotConnect(exceptions.HomeAssistantError):
