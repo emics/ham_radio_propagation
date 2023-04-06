@@ -15,7 +15,6 @@ PLATFORMS: Final = [Platform.SENSOR]
 # URL
 URL_STATIONS: Final = "https://www.bbgest.cloud/ham_radio_propagation/station_list.php"
 URL_API: Final = "https://www.bbgest.cloud/ham_radio_propagation/api.php"
-URL_HAMQSL: Final = "https://www.hamqsl.com/solarxml.php"
 
 # Base component constants
 DOMAIN: Final = "ham_radio_propagation"

@@ -3,7 +3,6 @@ from __future__ import annotations
 
 from datetime import timedelta
 from http import HTTPStatus
-from xml.parsers.expat import ExpatError
 
 import logging
 import async_timeout
@@ -152,7 +151,9 @@ class HamRadioData:
         _LOGGER.debug("Updating hamqsl.com data")
         try:
             async with async_timeout.timeout(REQUEST_TIMEOUT):
-                req = await self.websession.get(URL_HAMQSL)
+                req = await self.websession.get(
+                    f"{URL_API}?lat={self.latitude}&lon={self.longitude}&id={self.entry_id}"
+                )
             if req.status != HTTPStatus.OK:
                 _LOGGER.error("Request failed with status: %u", req.status)
                 return False
@@ -161,61 +162,27 @@ class HamRadioData:
             return False
 
         data = await req.text()
-        try:
-            xml_data = xmltodict.parse(data)
-        except ExpatError:
-            return False
+        entries = json.loads(data)
+        entry = entries[0]
 
-        solar_flux_index = xml_data["solar"]["solardata"]["solarflux"]
-        solar_sunspots = xml_data["solar"]["solardata"]["sunspots"]
-        solar_a_index = xml_data["solar"]["solardata"]["aindex"]
-        solar_k_index = xml_data["solar"]["solardata"]["kindex"]
-        solar_bz = xml_data["solar"]["solardata"]["magneticfield"]
-        solar_wind = xml_data["solar"]["solardata"]["solarwind"]
+        self.data["solar_flux_index"] = entry["solarflux"]
+        self.data["solar_sunspots"] = entry["sunspots"]
+        self.data["solar_a_index"] = entry["aindex"]
+        self.data["solar_k_index"] = entry["kindex"]
+        self.data["solar_bz"] = entry["magneticfield"]
+        self.data["solar_wind"] = entry["solarwind"]
 
-        band = xml_data["solar"]["solardata"]["calculatedconditions"]["band"]
-        for entry in band:
-            if entry["@name"] == "80m-40m":
-                if entry["@time"] == "day":
-                    solar_hf_80_40_day = entry["#text"]
-                else:
-                    solar_hf_80_40_night = entry["#text"]
-            elif entry["@name"] == "30m-20m":
-                if entry["@time"] == "day":
-                    solar_hf_30_20_day = entry["#text"]
-                else:
-                    solar_hf_30_20_night = entry["#text"]
-            elif entry["@name"] == "17m-15m":
-                if entry["@time"] == "day":
-                    solar_hf_17_15_day = entry["#text"]
-                else:
-                    solar_hf_17_15_night = entry["#text"]
-            elif entry["@name"] == "12m-10m":
-                if entry["@time"] == "day":
-                    solar_hf_12_10_day = entry["#text"]
-                else:
-                    solar_hf_12_10_night = entry["#text"]
+        self.data["solar_hf_80_40_day"] = entry["hf_80_40_day"]
+        self.data["solar_hf_80_40_night"] = entry["hf_80_40_night"]
+        self.data["solar_hf_30_20_day"] = entry["hf_30_20_day"]
+        self.data["solar_hf_30_20_night"] = entry["hf_30_20_night"]
+        self.data["solar_hf_17_15_day"] = entry["hf_17_15_day"]
+        self.data["solar_hf_17_15_night"] = entry["hf_17_15_night"]
+        self.data["solar_hf_12_10_day"] = entry["hf_12_10_day"]
+        self.data["solar_hf_12_10_night"] = entry["hf_12_10_night"]
 
-        solar_geomag_field = xml_data["solar"]["solardata"]["geomagfield"]
-        solar_sig_noise_lvl = xml_data["solar"]["solardata"]["signalnoise"]
-
-        self.data["solar_flux_index"] = solar_flux_index.strip()
-        self.data["solar_sunspots"] = solar_sunspots.strip()
-        self.data["solar_a_index"] = solar_a_index.strip()
-        self.data["solar_k_index"] = solar_k_index.strip()
-        self.data["solar_bz"] = solar_bz.strip()
-        self.data["solar_wind"] = solar_wind.strip()
-        self.data["solar_hf_80_40_day"] = solar_hf_80_40_day
-        self.data["solar_hf_80_40_night"] = solar_hf_80_40_night
-        self.data["solar_hf_30_20_day"] = solar_hf_30_20_day
-        self.data["solar_hf_30_20_night"] = solar_hf_30_20_night
-        self.data["solar_hf_17_15_day"] = solar_hf_17_15_day
-        self.data["solar_hf_17_15_night"] = solar_hf_17_15_night
-        self.data["solar_hf_12_10_day"] = solar_hf_12_10_day
-        self.data["solar_hf_12_10_night"] = solar_hf_12_10_night
-
-        self.data["solar_geomag_field"] = solar_geomag_field.strip()
-        self.data["solar_sig_noise_lvl"] = solar_sig_noise_lvl.strip()[1]
+        self.data["solar_geomag_field"] = entry["geomagfield"]
+        self.data["solar_sig_noise_lvl"] = entry["signalnoise"]
         return True
 
     async def async_data_update_kc2g(self):
