@@ -31,15 +31,13 @@ async def async_setup_entry(
     hass: HomeAssistant, entry: ConfigEntry, async_add_entities: AddEntitiesCallback
 ) -> None:
     """async_setup_platform"""
-    station_code = ""
-    # station_name = ""
-    name = entry.data.get(CONF_NAME, False)
+    station_code: str = ""					   
+    name: str = entry.data.get(CONF_NAME, False)
 
     if entry.data[CHOICE] == TYPE_ONLY_SOLAR:
         sensor_types_out = SENSOR_TYPES
     else:
-        station_code = entry.data.get(STATION_CODE, False)
-        # station_name = entry.data.get(STATION_NAME, False)
+        station_code = entry.data.get(STATION_CODE, False)															
         sensor_type_muf: tuple[SensorEntityDescription, ...] = (
             SensorEntityDescription(
                 key="solar_hf_muf_" + station_code,
@@ -73,7 +71,6 @@ async def async_setup_entry(
 
 class HamRadioSensor(SensorEntity):
     """Representation of HamRadioSensor."""
-
     _attr_has_entity_name: bool = True
     _choice: str
     _station_code: str
@@ -95,7 +92,6 @@ class HamRadioSensor(SensorEntity):
         slug = slugify(description.key.replace("/", "_"))
         self.entity_id = f"sensor.{DOMAIN}_{slug}"
         self._attr_name = f"{description.name}"
-        # self._attr_native_value = 0
         self._attr_unique_id = f"{entry.entry_id}_{slug}"
         self._attr_device_info = DeviceInfo(
             name=entry.title,
@@ -117,7 +113,6 @@ class HamRadioSensor(SensorEntity):
         if sensor_type in self.hamradiodata.data:
             self._attr_native_value = self.hamradiodata.data[sensor_type]
 
-
 class HamRadioData:
     """Get data from API."""
 
@@ -130,11 +125,11 @@ class HamRadioData:
         self.longitude = hass.config.longitude
         self.station_code = ""
         self.entry_id = ""
+        self.hass = hass
 
     @Throttle(MIN_TIME_BETWEEN_UPDATES)
     async def async_data_update(self, entry: ConfigEntry):
-        """Get data from the web service."""
-        _LOGGER.debug("Updating data")
+        """Get data from the web service."""									  
         self.station_code: str = entry.data.get(STATION_CODE, False)
         self.entry_id = entry.entry_id
         choice: str = entry.data[CHOICE]
@@ -171,6 +166,7 @@ class HamRadioData:
         self.data["solar_k_index"] = entry["kindex"]
         self.data["solar_bz"] = entry["magneticfield"]
         self.data["solar_wind"] = entry["solarwind"]
+        self.data["solar_fof2"] = entry["fof2"]
 
         self.data["solar_hf_80_40_day"] = entry["hf_80_40_day"]
         self.data["solar_hf_80_40_night"] = entry["hf_80_40_night"]
@@ -205,4 +201,26 @@ class HamRadioData:
         entries = json.loads(data)
         entry = entries[0]
         self.data["solar_hf_muf_" + station_code] = entry["mufd"]
+        if entry["olddata"] == "1":
+            call_data = {
+                "title": "Ham Radio Propagation",
+                "message": "The configured station <b>"
+                + entry["name"]
+                + " "
+                + station_code
+                + "</b> don't receive data.<br>Last update was: "
+                + entry["time"]
+                + '<br><br>Please consider delete it in the <a href="/config/integrations">Integration configuration page</a>.',
+                "notification_id": "hrp_" + station_code,
+            }
+            await self.hass.services.async_call(
+                "persistent_notification", "create", call_data, blocking=False
+            )
+        else:
+            call_data = {
+                "notification_id": "hrp_" + station_code,
+            }
+            await self.hass.services.async_call(
+                "persistent_notification", "dismiss", call_data, blocking=False
+            )
         return True

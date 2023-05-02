@@ -124,4 +124,11 @@ SENSOR_TYPES: tuple[SensorEntityDescription, ...] = (
         state_class=SensorStateClass.MEASUREMENT,
         icon="mdi:signal-cellular-2",
     ),
+    SensorEntityDescription(
+        key="solar_fof2",
+        name="Solar foF2",
+        state_class=SensorStateClass.MEASUREMENT,
+        icon="mdi:format-vertical-align-top",
+		native_unit_of_measurement="MHz",
+    ),
 )
