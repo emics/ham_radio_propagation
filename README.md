@@ -31,7 +31,7 @@ Alternatively, follow the steps below:
 
 1. Go to HACS "Integrations >" section
 2. In the lower right click `+ Explore & Download repositories`
-3. Search for "HAM" and add it
+3. Search for "HAM Radio" and add it
 
 
 ### Manual installation
