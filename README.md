@@ -21,7 +21,7 @@ Welcome to my repository Home Assistant - Custom Component for HAM Radio Propaga
 
 ## Installation
 
-### Using [Home Assistant Community Store](https://hacs.xyz/) (recommended)
+### Using HACS [Home Assistant Community Store](https://hacs.xyz/) (recommended)
 
 Click on the button below to automatically navigate to the repository within HACS:
 
@@ -30,11 +30,8 @@ Click on the button below to automatically navigate to the repository within HAC
 Alternatively, follow the steps below:
 
 1. Go to HACS "Integrations >" section
-2. Click 3 dots in top right
-3. Click "Custom repositories"
-4. Add repository `https://github.com/emics/ham_radio_propagation` with category `Integration`
-5. In the lower right click `+ Explore & Download repositories`
-6. Search for "HAM" and add it
+2. In the lower right click `+ Explore & Download repositories`
+3. Search for "HAM" and add it
 
 
 ### Manual installation
@@ -174,10 +171,8 @@ The use of these names, trademarks and brands appearing in these image files, do
 
 <!--- hacs -->
 [hacs]: https://github.com/custom-components/hacs
-[hacsbadge]: https://img.shields.io/badge/HACS-Custom-cyan.svg?style=for-the-badge
-[hacs_faq_custom]: https://hacs.xyz/docs/faq/custom_repositories
-[hacs_custom]: https://img.shields.io/badge/HACS-Custom-41BDF5.svg
-[hacs_integration]: https://github.com/hacs/integration
+[hacsbadge]: https://img.shields.io/badge/HACS-Default-cyan.svg?style=for-the-badge
+
 [commits-shield]: https://img.shields.io/github/last-commit/emics/ham_radio_propagation?color=pink&style=for-the-badge
 [commits]: https://github.com/emics/ham_radio_propagation/commits/dev
 [releases-shield]: https://img.shields.io/github/release/emics/ham_radio_propagation.svg?style=for-the-badge
