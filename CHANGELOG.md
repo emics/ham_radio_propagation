@@ -1,7 +1,7 @@
 # Changes
 
 ## v1.1.2 (02/05/2023)
-New feature available:
+New features available:
 * Added **foF2** (The highest frequency which the ionosphere will reflect vertically) sensor. [thanks to toni SA6EAL]
 * Added notification if the **MUF station configured** don't receive data.
 
