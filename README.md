@@ -161,6 +161,7 @@ Special thanks to:
 - [@kwirk](https://community.home-assistant.io/u/kwirk)
 - [@dragonjon](https://github.com/dragonjon)
 - [@Toni](https://www.qrz.com/db/SA6EAL)
+- [@ViPeR5000](https://github.com/ViPeR5000)
 
 ---
 
