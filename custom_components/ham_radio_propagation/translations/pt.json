@@ -1,0 +1,22 @@
+{
+    "config": {
+        "step": {
+            "user": {
+                "description": "Estas preparado para começar?",
+                "data": {
+                    "choice": "Faz a tua escolha"
+                }
+            },
+            "station": {
+                "description": "Seleciona a estação mais proxima podes consulta a lista em  https://prop.kc2g.com/stations/",
+                "data": {
+                    "user_muf_station_code": "Lista de estações"
+                }
+            }
+        },
+        "error": {
+            "cannot_connect": "[%key:common::config_flow::error::cannot_connect%]",
+            "unknown": "[%key:common::config_flow::error::unknown%]"
+        }
+    }
+}
