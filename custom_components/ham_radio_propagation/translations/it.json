@@ -8,7 +8,7 @@
                 }
             },
             "station": {
-                "description": "Selezione la Stazione più vicina dalla lista seguente o visita https://prop.kc2g.com/stations/",
+                "description": "Seleziona la Stazione più vicina dalla lista seguente o visita https://prop.kc2g.com/stations/",
                 "data": {
                     "user_muf_station_code": "Lista Stazioni"
                 }
