@@ -21,7 +21,7 @@ DOMAIN: Final = "ham_radio_propagation"
 NAME = "HAM Radio Propagation"
 MANUFACTURER = "hamqsl.com and kc2g.com"
 MODEL = "HAM Radio Propagation"
-VERSION = "1.1.0"
+VERSION = "1.1.2"
 CONFIGURATION_URL = "https://github.com/emics/ham_radio_propagation#readme"
 
 TYPE_ONLY_SOLAR = "Configure solar data"
