@@ -32,6 +32,7 @@ Alternatively, follow the steps below:
 1. Go to HACS "Integrations >" section
 2. In the lower right click `+ Explore & Download repositories`
 3. Search for "HAM Radio" and add it
+4. Restart Home Assistant.
 
 
 ### Manual installation
@@ -41,6 +42,7 @@ Alternatively, follow the steps below:
 * In the `custom_components` directory (folder) create a new folder called `ham_radio_propagation`.
 * Download file `Source code.zip` from the [latest release section][releases-latest] in this repository.
 * Extract _all_ files from this archive you downloaded in the directory (folder) you created.
+* Restart Home Assistant.
 
 
 ## Configuration
