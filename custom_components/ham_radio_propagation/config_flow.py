@@ -26,7 +26,7 @@ async def async_station_list_kc2g(hass: core.HomeAssistant) -> list:
     lat = hass.config.latitude
     lon = hass.config.longitude
     async with async_timeout.timeout(REQUEST_TIMEOUT):
-        req = await websession.get(f"{URL_STATIONS}?lat={lat}&lon={lon}")
+        req = await websession.get(f"{URL_BASE}{URL_STATIONS}?lat={lat}&lon={lon}")
     if req.status != HTTPStatus.OK:
         _LOGGER.error("Request failed with status: %u", req.status)
         return False
@@ -100,7 +100,7 @@ class HamRadioConfigFlow(ConfigFlow, domain=DOMAIN):
                         (
                             TYPE_ONLY_SOLAR,
                             TYPE_ONLY_MUF,
-                            #   TYPE_ALL,
+                            # TYPE_ALL,
                         )
                     )
                 }

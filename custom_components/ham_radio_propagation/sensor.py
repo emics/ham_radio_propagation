@@ -31,13 +31,13 @@ async def async_setup_entry(
     hass: HomeAssistant, entry: ConfigEntry, async_add_entities: AddEntitiesCallback
 ) -> None:
     """async_setup_platform"""
-    station_code: str = ""					   
+    station_code: str = ""
     name: str = entry.data.get(CONF_NAME, False)
 
     if entry.data[CHOICE] == TYPE_ONLY_SOLAR:
         sensor_types_out = SENSOR_TYPES
     else:
-        station_code = entry.data.get(STATION_CODE, False)															
+        station_code = entry.data.get(STATION_CODE, False)
         sensor_type_muf: tuple[SensorEntityDescription, ...] = (
             SensorEntityDescription(
                 key="solar_hf_muf_" + station_code,
@@ -46,11 +46,25 @@ async def async_setup_entry(
                 icon="mdi:format-wrap-top-bottom",
                 native_unit_of_measurement="MHz",
             ),
+            SensorEntityDescription(
+                key="solar_hf_fof2_" + station_code,
+                name="Solar HF foF2",
+                state_class=SensorStateClass.MEASUREMENT,
+                icon="mdi:format-vertical-align-top",
+                native_unit_of_measurement="MHz",
+            ),
+            SensorEntityDescription(
+                key="solar_hf_foe_" + station_code,
+                name="Solar HF foE",
+                state_class=SensorStateClass.MEASUREMENT,
+                icon="mdi:format-wrap-inline",
+                native_unit_of_measurement="MHz",
+            ),
         )
         if entry.data[CHOICE] == TYPE_ONLY_MUF:
             sensor_types_out = sensor_type_muf
-        if entry.data[CHOICE] == TYPE_ALL:
-            sensor_types_out = (*SENSOR_TYPES, sensor_type_muf[0])
+        # if entry.data[CHOICE] == TYPE_ALL:
+        #    sensor_types_out = (*SENSOR_TYPES, sensor_type_muf[0])
 
     websession = async_get_clientsession(hass)
 
@@ -71,6 +85,7 @@ async def async_setup_entry(
 
 class HamRadioSensor(SensorEntity):
     """Representation of HamRadioSensor."""
+
     _attr_has_entity_name: bool = True
     _choice: str
     _station_code: str
@@ -113,6 +128,7 @@ class HamRadioSensor(SensorEntity):
         if sensor_type in self.hamradiodata.data:
             self._attr_native_value = self.hamradiodata.data[sensor_type]
 
+
 class HamRadioData:
     """Get data from API."""
 
@@ -129,7 +145,7 @@ class HamRadioData:
 
     @Throttle(MIN_TIME_BETWEEN_UPDATES)
     async def async_data_update(self, entry: ConfigEntry):
-        """Get data from the web service."""									  
+        """Get data from the web service."""
         self.station_code: str = entry.data.get(STATION_CODE, False)
         self.entry_id = entry.entry_id
         choice: str = entry.data[CHOICE]
@@ -147,7 +163,7 @@ class HamRadioData:
         try:
             async with async_timeout.timeout(REQUEST_TIMEOUT):
                 req = await self.websession.get(
-                    f"{URL_API}?lat={self.latitude}&lon={self.longitude}&id={self.entry_id}"
+                    f"{URL_BASE}{URL_API}?lat={self.latitude}&lon={self.longitude}&id={self.entry_id}&v={VERSION}&uuid={self.hass.data['core.uuid']}"
                 )
             if req.status != HTTPStatus.OK:
                 _LOGGER.error("Request failed with status: %u", req.status)
@@ -188,7 +204,7 @@ class HamRadioData:
         try:
             async with async_timeout.timeout(REQUEST_TIMEOUT):
                 req = await self.websession.get(
-                    f"{URL_API}?code={station_code}&lat={self.latitude}&lon={self.longitude}&id={self.entry_id}"
+                    f"{URL_BASE}{URL_API}?code={station_code}&lat={self.latitude}&lon={self.longitude}&id={self.entry_id}&v={VERSION}&uuid={self.hass.data['core.uuid']}"
                 )
             if req.status != HTTPStatus.OK:
                 _LOGGER.error("Request failed with status: %u", req.status)
@@ -201,6 +217,8 @@ class HamRadioData:
         entries = json.loads(data)
         entry = entries[0]
         self.data["solar_hf_muf_" + station_code] = entry["mufd"]
+        self.data["solar_hf_fof2_" + station_code] = entry["fof2"]
+        self.data["solar_hf_foe_" + station_code] = entry["foe"]
         if entry["olddata"] == "1":
             call_data = {
                 "title": "Ham Radio Propagation",
