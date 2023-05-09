@@ -13,15 +13,16 @@ REQUEST_TIMEOUT = 60  # seconds
 PLATFORMS: Final = [Platform.SENSOR]
 
 # URL
-URL_STATIONS: Final = "https://www.bbgest.cloud/ham_radio_propagation/station_list.php"
-URL_API: Final = "https://www.bbgest.cloud/ham_radio_propagation/api.php"
+URL_BASE: Final = "https://www.bbgest.cloud/ham_radio_propagation/"
+URL_STATIONS: Final = "station_list.php"
+URL_API: Final = "api.php"
 
 # Base component constants
 DOMAIN: Final = "ham_radio_propagation"
 NAME = "HAM Radio Propagation"
 MANUFACTURER = "hamqsl.com and kc2g.com"
 MODEL = "HAM Radio Propagation"
-VERSION = "1.1.3"
+VERSION = "1.1.4"
 CONFIGURATION_URL = "https://github.com/emics/ham_radio_propagation#readme"
 
 TYPE_ONLY_SOLAR = "Configure solar data"
@@ -129,6 +130,6 @@ SENSOR_TYPES: tuple[SensorEntityDescription, ...] = (
         name="Solar foF2",
         state_class=SensorStateClass.MEASUREMENT,
         icon="mdi:format-vertical-align-top",
-		native_unit_of_measurement="MHz",
+        native_unit_of_measurement="MHz",
     ),
 )

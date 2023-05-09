@@ -1,5 +1,21 @@
 # Changes
 
+## v1.1.4 (10/05/2023)
+### What's Changed
+* added instructions to restart Home Assistant after HACS installation 
+* added traslation (DE - ES - FR - NL - PL - SE)
+* added new sensor foF2 and foE from ionosonde
+
+
+## v1.1.3 (05/05/2023)
+### What's Changed
+* added Toni as contributor 
+* Create pt.json by @ViPeR5000 
+* Create it.json 
+
+### New Contributors
+* @emics made their first contribution in https://github.com/emics/ham_radio_propagation/pull/4
+* @ViPeR5000 made their first contribution in https://github.com/emics/ham_radio_propagation/pull/5
 ## v1.1.2 (02/05/2023)
 New features available:
 * Added **foF2** (The highest frequency which the ionosphere will reflect vertically) sensor. [thanks to toni SA6EAL]
