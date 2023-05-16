@@ -1,7 +1,7 @@
 """Support for ham_radio_propagation ."""
 from __future__ import annotations
 
-from datetime import timedelta
+from datetime import datetime, timedelta
 from http import HTTPStatus
 
 import logging
@@ -142,6 +142,7 @@ class HamRadioData:
         self.station_code = ""
         self.entry_id = ""
         self.hass = hass
+        self.last_execution = datetime(1970, 1, 1, 0, 0)
 
     @Throttle(MIN_TIME_BETWEEN_UPDATES)
     async def async_data_update(self, entry: ConfigEntry):
@@ -150,12 +151,18 @@ class HamRadioData:
         self.entry_id = entry.entry_id
         choice: str = entry.data[CHOICE]
         if choice == TYPE_ONLY_SOLAR:
-            await HamRadioData.async_data_update_hamqsl(self)
+            await HamRadioData.async_data_update_noaa(self)
+            if datetime.now() > self.last_execution + MIN_TIME_UPDATES_STD:
+                await HamRadioData.async_data_update_hamqsl(self)
+                self.last_execution = datetime.now()
         if choice == TYPE_ONLY_MUF:
-            await HamRadioData.async_data_update_kc2g(self)
-        if choice == TYPE_ALL:
-            await HamRadioData.async_data_update_hamqsl(self)
-            await HamRadioData.async_data_update_kc2g(self)
+            if datetime.now() > self.last_execution + MIN_TIME_UPDATES_STD:
+                await HamRadioData.async_data_update_kc2g(self)
+                self.last_execution = datetime.now()
+
+    #   if choice == TYPE_ALL:
+    #       await HamRadioData.async_data_update_hamqsl(self)
+    #       await HamRadioData.async_data_update_kc2g(self)
 
     async def async_data_update_hamqsl(self):
         """Get the hamqsl.com data from the web service."""
@@ -242,3 +249,41 @@ class HamRadioData:
                 "persistent_notification", "dismiss", call_data, blocking=False
             )
         return True
+
+    async def async_data_update_noaa(self):
+        """Get the NOAA data from the web service."""
+        _LOGGER.debug("Updating NOAA data")
+        try:
+            async with async_timeout.timeout(REQUEST_TIMEOUT):
+                req = await self.websession.get(URL_NOAA_XRAY)
+            if req.status != HTTPStatus.OK:
+                _LOGGER.error("Request failed with status: %u", req.status)
+                return False
+        except Exception:
+            _LOGGER.error("Error contact NOAA API")
+            return False
+
+        data = await req.text()
+        entries = json.loads(data)
+        entry = entries[0]
+        self.data["solar_xray"] = entry["current_class"]
+
+        xray: str = entry["current_class"]
+        xray_scale: float = 0.0
+        if xray[:1] == "A":
+            xray = xray.replace("A", "")
+            xray_scale = float(xray) * 1
+        if xray[:1] == "B":
+            xray = xray.replace("B", "")
+            xray_scale = float(xray) * 10
+        if xray[:1] == "C":
+            xray = xray.replace("C", "")
+            xray_scale = float(xray) * 100
+        if xray[:1] == "M":
+            xray = xray.replace("M", "")
+            xray_scale = float(xray) * 1000
+        if xray[:1] == "X":
+            xray = xray.replace("X", "")
+            xray_scale = float(xray) * 10000
+
+        self.data["solar_xray_scale"] = xray_scale

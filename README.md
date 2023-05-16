@@ -89,23 +89,45 @@ Add an Entities Card and paste this code.
 ```yaml
 type: entities
 entities:
-  - entity: sensor.ham_radio_propagation_solar_flux_index
-  - entity: sensor.ham_radio_propagation_solar_sunspots
-  - entity: sensor.ham_radio_propagation_solar_a_index
-  - entity: sensor.ham_radio_propagation_solar_k_index
-  - entity: sensor.ham_radio_propagation_solar_bz
-  - entity: sensor.ham_radio_propagation_solar_wind
-  - entity: sensor.ham_radio_propagation_solar_hf_80_40_day
-  - entity: sensor.ham_radio_propagation_solar_hf_80_40_night
-  - entity: sensor.ham_radio_propagation_solar_hf_30_20_day
-  - entity: sensor.ham_radio_propagation_solar_hf_30_20_night
-  - entity: sensor.ham_radio_propagation_solar_hf_17_15_day
-  - entity: sensor.ham_radio_propagation_solar_hf_17_15_night
   - entity: sensor.ham_radio_propagation_solar_hf_12_10_day
+    name: HF Conditions 12m-10m Day
   - entity: sensor.ham_radio_propagation_solar_hf_12_10_night
+    name: HF Conditions 12m-10m Night
+  - entity: sensor.ham_radio_propagation_solar_hf_17_15_day
+    name: HF Conditions 17m-15m Day
+  - entity: sensor.ham_radio_propagation_solar_hf_17_15_night
+    name: HF Conditions 17m-15m Night
+  - entity: sensor.ham_radio_propagation_solar_hf_30_20_day
+    name: HF Conditions 30m-20m Day
+  - entity: sensor.ham_radio_propagation_solar_hf_30_20_night
+    name: HF Conditions 30m-20m Night
+  - entity: sensor.ham_radio_propagation_solar_hf_80_40_day
+    name: HF Conditions 80m-40m Day
+  - entity: sensor.ham_radio_propagation_solar_hf_80_40_night
+    name: HF Conditions 80m-40m Night
   - entity: sensor.ham_radio_propagation_solar_geomag_field
+    name: HF Conditions Geomag Field
   - entity: sensor.ham_radio_propagation_solar_sig_noise_lvl
-title: HAM Radio Propagation
+    name: HF Conditions Noise Level
+  - entity: sensor.ham_radio_propagation_solar_a_index
+    name: Solar A-Index
+  - entity: sensor.ham_radio_propagation_solar_bz
+    name: Solar Bz
+  - entity: sensor.ham_radio_propagation_solar_flux_index
+    name: Solar Flux Index
+  - entity: sensor.ham_radio_propagation_solar_fof2
+    name: Solar foF2
+  - entity: sensor.ham_radio_propagation_solar_k_index
+    name: Solar K-Index
+  - entity: sensor.ham_radio_propagation_solar_sunspots
+    name: Solar Sunspots
+  - entity: sensor.ham_radio_propagation_solar_wind
+    name: Solar Wind
+  - entity: sensor.ham_radio_propagation_solar_xray
+    name: Solar xRay Class
+  - entity: sensor.ham_radio_propagation_solar_xray_scale
+    name: Solar xRay Scale
+title: Solar Data
 ```
 
 This is the card result:
@@ -136,7 +158,7 @@ Daily Average of Magnetic Activity
 
 
 ## Solar K-Index 
-Updated every 3 Hours
+<sub>Updated every Hour</sub>
 * 0 Inactive
 * 1 Very quiet
 * 2 Quiet
@@ -147,6 +169,31 @@ Updated every 3 Hours
 * 7 Severe storm
 * 8 Very severe storm
 * 9 Extremely severe storm
+
+## Solar X-Ray 
+<sub>Updated every 10 minutes</sub>
+
+The **Class** sensor is the modern classification system for solar flares and use letters A, B, C, M, or X, according to the peak flux in watts per square metre (W/m2).
+
+The **Scale** sensor is the numerical representation of the Class sensor and can be used to trigger automations and notifications.
+
+### Class to Scale sensor translation example
+| Class | Scale | Factor |
+|---|---:|---:|
+| `A1.1` | 1.1 | x1 |
+| `A5.1` | 5.1 | x1 |
+| `B1.4` | 14 | x10 |
+| `B8.7` | 87 | x10 |
+| `C2.5` | 250 | x100 |
+| `C7.9` | 790 | x100 |
+| `M2.3` | 2300 | x1000 |
+| `M5.2` | 5200 | x1000 |
+| `M7.3` | 7300 | x1000 |
+| `X1.7` | 11000 | x10000 |
+| `X3.7` | 37000 | x10000 |
+| `X6.9` | 69000 | x10000 |
+
+
 
 
 <p align="center">* * *</p>
@@ -164,6 +211,7 @@ Special thanks to:
 - [@dragonjon](https://github.com/dragonjon)
 - [@Toni](https://www.qrz.com/db/SA6EAL)
 - [@ViPeR5000](https://github.com/ViPeR5000)
+- [@CT2HUU](https://github.com/CT2HUU)
 
 ---
 
