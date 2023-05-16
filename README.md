@@ -40,7 +40,7 @@ Alternatively, follow the steps below:
 * Using the tool of choice open the directory (folder) for your HA configuration (where you find `configuration.yaml`).
 * If you do not have a `custom_components` directory (folder) there, you need to create it.
 * In the `custom_components` directory (folder) create a new folder called `ham_radio_propagation`.
-* Download file `Source code.zip` from the [latest release section][releases-latest] in this repository.
+* Download file `ham_radio_propagation.zip` from the [latest release section][releases-latest] in this repository.
 * Extract _all_ files from this archive you downloaded in the directory (folder) you created.
 * Restart Home Assistant.
 
