@@ -8,11 +8,15 @@ from homeassistant.components.sensor import (
     SensorEntityDescription,
 )
 
-MIN_TIME_BETWEEN_UPDATES = timedelta(hours=2)
-REQUEST_TIMEOUT = 60  # seconds
+MIN_TIME_UPDATES_STD = timedelta(hours=1)
+MIN_TIME_BETWEEN_UPDATES = timedelta(minutes=5)
+REQUEST_TIMEOUT = 30  # seconds
 PLATFORMS: Final = [Platform.SENSOR]
 
 # URL
+URL_NOAA_XRAY: Final = (
+    "https://services.swpc.noaa.gov/json/goes/primary/xray-flares-latest.json"
+)
 URL_BASE: Final = "https://www.bbgest.cloud/ham_radio_propagation/"
 URL_STATIONS: Final = "station_list.php"
 URL_API: Final = "api.php"
@@ -22,7 +26,7 @@ DOMAIN: Final = "ham_radio_propagation"
 NAME = "HAM Radio Propagation"
 MANUFACTURER = "hamqsl.com and kc2g.com"
 MODEL = "HAM Radio Propagation"
-VERSION = "1.1.4"
+VERSION = "1.1.5"
 CONFIGURATION_URL = "https://github.com/emics/ham_radio_propagation#readme"
 
 TYPE_ONLY_SOLAR = "Configure solar data"
@@ -131,5 +135,16 @@ SENSOR_TYPES: tuple[SensorEntityDescription, ...] = (
         state_class=SensorStateClass.MEASUREMENT,
         icon="mdi:format-vertical-align-top",
         native_unit_of_measurement="MHz",
+    ),
+    SensorEntityDescription(
+        key="solar_xray",
+        name="Solar X-Ray Class",
+        icon="mdi:flare",
+    ),
+    SensorEntityDescription(
+        key="solar_xray_scale",
+        name="Solar X-Ray Scale",
+        state_class=SensorStateClass.MEASUREMENT,
+        icon="mdi:chart-bell-curve",
     ),
 )
