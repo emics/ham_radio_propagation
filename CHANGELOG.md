@@ -21,7 +21,7 @@
 | `X3.7` | 37000 | x10000 |
 | `X6.9` | 69000 | x10000 |
 
-> This new senors ar updated every 10 minutes, others every hour.
+> This new senors are updated every 10 minutes, others every hour.
 
 ## v1.1.4 (10/05/2023)
 ### What's Changed
