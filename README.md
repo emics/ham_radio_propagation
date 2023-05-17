@@ -136,62 +136,21 @@ This is the card result:
 
 
 
-# How to read sensor value 
-The three main items you want to pay attention to are the **SFI** (Solar Flux Index), the **K-Index** and the **A-Index**.
 
-## Solar Flux Index
-Summarization of the Sun's Radiation Output
-* 70 – Not Good
-* 80 – Good
-* 90 – Better
-* 100+ – Best
+# How To section
 
+[How to read sensor value](https://github.com/emics/ham_radio_propagation/blob/main/SENSOR.md)
 
-## Solar A-Index 
-Daily Average of Magnetic Activity
-* 0 – 7 Quiet
-* 8 – 15 Unsettled
-* 16 – 29 Active
-* 30 – 49 Minor storm
-* 50 – 99 Major storm
-* 100 – 400 Severe storm
+[Solar Flux Index](https://github.com/emics/ham_radio_propagation/blob/main/SENSOR.md#solar-flux-index)
 
+[Solar A-Index](https://github.com/emics/ham_radio_propagation/blob/main/SENSOR.md#solar-a-index)
 
-## Solar K-Index 
-<sub>Updated every Hour</sub>
-* 0 Inactive
-* 1 Very quiet
-* 2 Quiet
-* 3 Unsettled
-* 4 Active
-* 5 Minor storm
-* 6 Major storm
-* 7 Severe storm
-* 8 Very severe storm
-* 9 Extremely severe storm
+[Solar K-Index](https://github.com/emics/ham_radio_propagation/blob/main/SENSOR.md#solar-k-index)
 
-## Solar X-Ray 
-<sub>Updated every 10 minutes</sub>
+[Solar X-Ray ](https://github.com/emics/ham_radio_propagation/blob/main/SENSOR.md#solar-x-ray)
 
-The **Class** sensor is the modern classification system for solar flares and use letters A, B, C, M, or X, according to the peak flux in watts per square metre (W/m2).
+[Solar Flare Notification](https://github.com/emics/ham_radio_propagation/blob/main/SENSOR.md#solar-flare-notification)
 
-The **Scale** sensor is the numerical representation of the Class sensor and can be used to trigger automations and notifications.
-
-### Class to Scale sensor translation example
-| Class | Scale | Factor |
-|---|---:|---:|
-| `A1.1` | 1.1 | x1 |
-| `A5.1` | 5.1 | x1 |
-| `B1.4` | 14 | x10 |
-| `B8.7` | 87 | x10 |
-| `C2.5` | 250 | x100 |
-| `C7.9` | 790 | x100 |
-| `M2.3` | 2300 | x1000 |
-| `M5.2` | 5200 | x1000 |
-| `M7.3` | 7300 | x1000 |
-| `X1.7` | 11000 | x10000 |
-| `X3.7` | 37000 | x10000 |
-| `X6.9` | 69000 | x10000 |
 
 
 
@@ -235,7 +194,6 @@ The use of these names, trademarks and brands appearing in these image files, do
 [maintenance-shield]: https://img.shields.io/badge/maintainer-%40emics-orange.svg?style=for-the-badge
 [installations-shield]: https://img.shields.io/endpoint?url=https://www.bbgest.cloud/ham_radio_propagation/shield.php&style=for-the-badge
 [contribution]: https://github.com/emics/ham_radio_propagation/blob/main/CONTRIBUTING.md
-
 
 
 <!--- External Link -->
