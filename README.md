@@ -14,6 +14,8 @@
 
 [![BuyMeCoffee][buymecoffeebadge]][buymecoffee]
 
+[![Telegram][telegram-badge]][telegram-group]
+
 ## Introduction
 Welcome to my repository Home Assistant - Custom Component for HAM Radio Propagation connected to the [hamqsl.com][hamqsl] and [kc2g.com][kc2g] API.
 
@@ -204,3 +206,5 @@ The use of these names, trademarks and brands appearing in these image files, do
 [buymecoffeebadge]: https://img.buymeacoffee.com/button-api/?text=Buy%20me%20a%20coffee&emoji=&slug=emics&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff
 [forum-shield]: https://img.shields.io/badge/community-forum-brightgreen.svg?style=for-the-badge
 [forum]: https://community.home-assistant.io/t/custom-component-ham-radio-propagation/547664
+[telegram-badge]: https://img.shields.io/static/v1?label=telegram&message=support%20chat&color=informational&style=for-the-badge&logo=telegram
+[telegram-group]: https://t.me/+SbSwDkEPwFFkZDlk
