@@ -37,7 +37,7 @@ Daily Average of Magnetic Activity
 
 The **Class** sensor is the modern classification system for solar flares and use letters A, B, C, M, or X, according to the peak flux in watts per square metre (W/m2).
 
-The **Scale** sensor is the numerical representation of the Class sensor and can be used to trigger automations and notifications.
+The **Scale** sensor is the numerical representation of the Class sensor and can be used to trigger [automations and notifications](https://github.com/emics/ham_radio_propagation/blob/main/SENSOR.md#solar-flare-notification).
 
 ### Class to Scale sensor translation example
 | Class | Scale | Factor |
@@ -63,7 +63,7 @@ In this graph you can see a spike with M9.1 solar Activity
 
 
 ## Solar Flare Notification
-For solar flare notification you can create an Automation, this example send an alert to your companion App on your phone with custom message.
+For receive Solar Flare Notification you can create an Automation, this example send an alert to your companion App on your phone with custom message.
 
 Under Settings -> Automation create new and configure  with this Trigger:
 ```yaml
