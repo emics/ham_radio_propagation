@@ -207,4 +207,4 @@ The use of these names, trademarks and brands appearing in these image files, do
 [forum-shield]: https://img.shields.io/badge/community-forum-brightgreen.svg?style=for-the-badge
 [forum]: https://community.home-assistant.io/t/custom-component-ham-radio-propagation/547664
 [telegram-badge]: https://img.shields.io/static/v1?label=telegram&message=support%20chat&color=informational&style=for-the-badge&logo=telegram
-[telegram-group]: https://t.me/+SbSwDkEPwFFkZDlk
+[telegram-group]: https://t.me/ham_radio_propagation
