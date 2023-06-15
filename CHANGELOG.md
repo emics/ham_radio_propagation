@@ -1,5 +1,8 @@
 # Changes
 
+## v1.1.6 (15/06/2023)
+* added Confidence sensor in Ionosonde Integration
+
 ## v1.1.5 (16/05/2023)
 * added new solar X-Ray sensors Class and Scale.
    * The **Class** sensor is the modern classification system for solar flares and use letters A, B, C, M, or X, according to the peak flux in watts per square metre (W/m2)
