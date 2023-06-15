@@ -60,6 +60,12 @@ async def async_setup_entry(
                 icon="mdi:format-wrap-inline",
                 native_unit_of_measurement="MHz",
             ),
+            SensorEntityDescription(
+                key="solar_hf_cs_" + station_code,
+                name="Solar HF Confidence",
+                state_class=SensorStateClass.MEASUREMENT,
+                icon="mdi:percent-box-outline",
+            ),
         )
         if entry.data[CHOICE] == TYPE_ONLY_MUF:
             sensor_types_out = sensor_type_muf
@@ -226,6 +232,7 @@ class HamRadioData:
         self.data["solar_hf_muf_" + station_code] = entry["mufd"]
         self.data["solar_hf_fof2_" + station_code] = entry["fof2"]
         self.data["solar_hf_foe_" + station_code] = entry["foe"]
+        self.data["solar_hf_cs_" + station_code] = entry["cs"]
         if entry["olddata"] == "1":
             call_data = {
                 "title": "Ham Radio Propagation",
