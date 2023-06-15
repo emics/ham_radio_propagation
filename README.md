@@ -10,7 +10,7 @@
 [![Project Maintenance][maintenance-shield]][user_profile]
 [![Community Forum][forum-shield]][forum]
 
-![Active Installations][installations-shield]
+![Active Installations](https://img.shields.io/endpoint?url=https://www.bbgest.cloud/ham_radio_propagation/shield.php&style=for-the-badge)
 
 [![BuyMeCoffee][buymecoffeebadge]][buymecoffee]
 
