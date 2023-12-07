@@ -137,7 +137,7 @@ This is the card result:
 ![Entity Card](https://raw.githubusercontent.com/emics/ham_radio_propagation/main/assets/entity_list.png)
 
 #### CSS Card
-Thanks to our friend Mikko a [special card with CSS](https://github.com/emics/ham_radio_propagation/mikko_css.md) to visualize data.
+Thanks to our friend Mikko a [special card with CSS](https://github.com/emics/ham_radio_propagation/blob/main/MIKKO_CSS.md) to visualize data.
 
 
 # How To section

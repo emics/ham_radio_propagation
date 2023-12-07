@@ -2,8 +2,8 @@
 Our friend share on [HRP Telegram Channel](https://t.me/+SbSwDkEPwFFkZDlk) an awesome card for data visualization.
 
 
-![Device Solar](https://raw.githubusercontent.com/emics/ham_radio_propagation/main/assets/mikko-png.jpg)
-
+![Device Solar](https://raw.githubusercontent.com/emics/ham_radio_propagation/main/assets/mikko-css.jpg)
+ 
 
 The first card Overall propagation
 ```yaml
