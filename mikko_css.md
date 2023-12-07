@@ -8,11 +8,6 @@ Our friend share on [HRP Telegram Channel](https://t.me/+SbSwDkEPwFFkZDlk) an aw
 The first card Overall propagation
 ```yaml
 type: markdown
-card_mod:
-    style: |
-    ha-card {
-        --ha-card-background: #434954;
-    }
 title: Overall propagation
 content: >-
     <table>   
