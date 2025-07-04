@@ -12,10 +12,11 @@ title: Overall propagation
 content: >-
     <table>   
     <tr>
-    <td></td><td><h3>10m-12m&nbsp;&nbsp;</h3></td><td><h3>15m-17m&nbsp;&nbsp;</h3></td><td><h3>20m-30m&nbsp;&nbsp;</h3></td><td><h3>40m-80m&nbsp;&nbsp;</h3></td>
+    <td></td><td><h3>6m&nbsp;&nbsp;</h3></td><td><h3>10m-12m&nbsp;&nbsp;</h3></td><td><h3>15m-17m&nbsp;&nbsp;</h3></td><td><h3>20m-30m&nbsp;&nbsp;</h3></td><td><h3>40m-80m&nbsp;&nbsp;</h3></td>
     </tr>    
     <tr>     
     <td><h3>Day</h3></td>   
+    <td><center><font color="{% if is_state('sensor.ham_radio_propagation_solar_hf_6_day', 'Good') %} #008000 {% elif is_state('sensor.ham_radio_propagation_solar_hf_6_day', 'Fair') %} #ffff00 {% elif is_state('sensor.ham_radio_propagation_solar_hf_6_day', 'Poor') %} #ff0000 {% endif %}"><h3>{{ states('sensor.ham_radio_propagation_solar_hf_6_day') }}</h3></font></center></td>
     <td><center><font color="{% if is_state('sensor.ham_radio_propagation_solar_hf_12_10_day', 'Good') %} #008000 {% elif is_state('sensor.ham_radio_propagation_solar_hf_12_10_day', 'Fair') %} #ffff00 {% elif is_state('sensor.ham_radio_propagation_solar_hf_12_10_day', 'Poor') %} #ff0000 {% endif %}"><h3>{{ states('sensor.ham_radio_propagation_solar_hf_12_10_day') }}</h3></font></center></td>     
     <td><center><font color="{% if is_state('sensor.ham_radio_propagation_solar_hf_17_15_day', 'Good') %} #008000 {% elif is_state('sensor.ham_radio_propagation_solar_hf_17_15_day', 'Fair') %} #ffff00 {% elif is_state('sensor.ham_radio_propagation_solar_hf_17_15_day', 'Poor') %} #ff0000 {% endif %}"><h3>{{ states('sensor.ham_radio_propagation_solar_hf_17_15_day') }}</h3></font></center></td>   
     <td><center><font color="{% if is_state('sensor.ham_radio_propagation_solar_hf_30_20_day', 'Good') %} #008000 {% elif is_state('sensor.ham_radio_propagation_solar_hf_30_20_day', 'Fair') %} #ffff00 {% elif is_state('sensor.ham_radio_propagation_solar_hf_30_20_day', 'Poor') %} #ff0000 {% endif %}"><h3>{{ states('sensor.ham_radio_propagation_solar_hf_30_20_day') }}</h3></font></center></td>   
@@ -23,6 +24,7 @@ content: >-
     </tr>    
     <tr>   
     <td><h3>Night</h3></td>    
+    <td><center><font color="{% if is_state('sensor.ham_radio_propagation_solar_hf_6_night', 'Good') %} #008000 {% elif is_state('sensor.ham_radio_propagation_solar_hf_6_night', 'Fair') %} #ffff00 {% elif is_state('sensor.ham_radio_propagation_solar_hf_6_night', 'Poor') %} #ff0000 {% else %} black {% endif %}"><h3>{{ states('sensor.ham_radio_propagation_solar_hf_6_night') }}</h3></font></center></td>
     <td><center><font color="{% if is_state('sensor.ham_radio_propagation_solar_hf_12_10_night', 'Good') %} #008000 {% elif is_state('sensor.ham_radio_propagation_solar_hf_12_10_night', 'Fair') %} #ffff00 {% elif is_state('sensor.ham_radio_propagation_solar_hf_12_10_night', 'Poor') %} #ff0000 {% else %} black {% endif %}"><h3>{{ states('sensor.ham_radio_propagation_solar_hf_12_10_night') }}</h3></font></center></td>     
     <td><center><font color="{% if is_state('sensor.ham_radio_propagation_solar_hf_17_15_night', 'Good') %} #008000 {% elif is_state('sensor.ham_radio_propagation_solar_hf_17_15_night', 'Fair') %} #ffff00 {% elif is_state('sensor.ham_radio_propagation_solar_hf_17_15_night', 'Poor') %} #ff0000 {% else %} black {% endif %}"><h3>{{ states('sensor.ham_radio_propagation_solar_hf_17_15_night') }}</h3></font></center></td>   
     <td><center><font color="{% if is_state('sensor.ham_radio_propagation_solar_hf_30_20_night', 'Good') %} #008000 {% elif is_state('sensor.ham_radio_propagation_solar_hf_30_20_night', 'Fair') %} #ffff00 {% elif is_state('sensor.ham_radio_propagation_solar_hf_30_20_night', 'Poor') %} #ff0000 {% else %} black {% endif %}"><h3>{{ states('sensor.ham_radio_propagation_solar_hf_30_20_night') }}</h3></font></center></td>   
