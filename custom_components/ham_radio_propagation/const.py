@@ -119,6 +119,16 @@ SENSOR_TYPES: tuple[SensorEntityDescription, ...] = (
         icon="mdi:sine-wave",
     ),
     SensorEntityDescription(
+        key="solar_hf_6_day",
+        name="HF Conditions 6m Day",
+        icon="mdi:sine-wave",
+    ),
+    SensorEntityDescription(
+        key="solar_hf_6_night",
+        name="HF Conditions 6m Night",
+        icon="mdi:sine-wave",
+    ),
+    SensorEntityDescription(
         key="solar_geomag_field",
         name="HF Conditions Geomag Field",
         icon="mdi:compass",

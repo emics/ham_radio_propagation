@@ -205,6 +205,8 @@ class HamRadioData:
         self.data["solar_hf_17_15_night"] = entry["hf_17_15_night"]
         self.data["solar_hf_12_10_day"] = entry["hf_12_10_day"]
         self.data["solar_hf_12_10_night"] = entry["hf_12_10_night"]
+        self.data["solar_hf_6_day"] = entry["hf_6_day"]
+        self.data["solar_hf_6_night"] = entry["hf_6_night"]
 
         self.data["solar_geomag_field"] = entry["geomagfield"]
         self.data["solar_sig_noise_lvl"] = entry["signalnoise"]
